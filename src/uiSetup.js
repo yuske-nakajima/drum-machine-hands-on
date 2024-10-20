@@ -18,29 +18,16 @@ function dmUiSetup() {
       fill(DM_COLORS.machineLight)
       strokeWeight(DM_LINE_WEIGHT)
 
-      // Volumeノブ・Tempoノブの描画エリア
-      rect(
-        DM_POSITIONS.knobArea.x,
-        DM_POSITIONS.knobArea.y,
-        DM_PARTS_SIZES.basicControlArea.width,
-        DM_PARTS_SIZES.basicControlArea.height,
-      )
-
-      // コントロールボタンの描画エリア（再生・停止）
-      rect(
-        DM_POSITIONS.controlButtonArea.x,
-        DM_POSITIONS.controlButtonArea.y,
-        DM_PARTS_SIZES.basicControlArea.width,
-        DM_PARTS_SIZES.basicControlArea.height,
-      )
-
-      // パターンボタンの描画エリア
-      rect(
-        DM_POSITIONS.patternButtonArea.x,
-        DM_POSITIONS.patternButtonArea.y,
-        DM_PARTS_SIZES.basicControlArea.width,
-        DM_PARTS_SIZES.basicControlArea.height,
-      )
+      // volume・tempoエリア controlエリア patternエリアの描画
+      for (let i = 0; i < 3; i++) {
+        // ボタンの描画エリア
+        rect(
+          DM_POSITIONS.controlArea.x + i * (DM_PARTS_SIZES.controlArea.width + DM_AREA_GAP),
+          DM_POSITIONS.controlArea.y,
+          DM_PARTS_SIZES.controlArea.width,
+          DM_PARTS_SIZES.controlArea.height,
+        )
+      }
 
       // メインエリアの描画
       rect(
@@ -75,7 +62,7 @@ function dmUiSetup() {
     // テキスト
     dmDrawBlock(() => {
       fill(DM_COLORS.machineText)
-      textSize(DM_PARTS_SIZES.seqText.height / 4)
+      textSize(DM_PARTS_SIZES.seqCell.height / 4)
       textStyle(BOLD)
       textAlign(CENTER, CENTER)
 
@@ -90,7 +77,7 @@ function dmUiSetup() {
 
       // 音色
       for (let i = 0; i < DM_MUSIC_LIST.length; i++) {
-        text(DM_MUSIC_LIST[i].name, DM_POSITIONS.seqText.x, DM_POSITIONS.seqText.y + i * DM_PARTS_SIZES.seqText.height)
+        text(DM_MUSIC_LIST[i].name, DM_POSITIONS.seqText.x, DM_POSITIONS.seqText.y + i * DM_PARTS_SIZES.seqCell.height)
       }
     })
   })

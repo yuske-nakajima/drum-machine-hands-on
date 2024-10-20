@@ -4,6 +4,7 @@ const DM_HEIGHT = 530
 const DM_LINE_WEIGHT = 2
 const DM_BEAT = 16
 const DM_PATTERN_NUM = 4
+const DM_AREA_GAP = 20
 const DM_PATTERN_BUTTON_GAP = 10
 
 const DM_COLORS = {
@@ -23,16 +24,8 @@ const DM_COLORS = {
 }
 const DM_POSITIONS = {
   // エリア
-  knobArea: {
+  controlArea: {
     x: 20,
-    y: 20,
-  },
-  controlButtonArea: {
-    x: 280,
-    y: 20,
-  },
-  patternButtonArea: {
-    x: 540,
     y: 20,
   },
   mainArea: {
@@ -92,17 +85,13 @@ const DM_POSITIONS = {
 }
 const DM_PARTS_SIZES = {
   // エリア
-  basicControlArea: {
+  controlArea: {
     width: 240,
     height: 70,
   },
   mainArea: {
     width: 760,
     height: 400,
-  },
-  seqText: {
-    width: 80,
-    height: 40,
   },
   // パーツ
   knob: {

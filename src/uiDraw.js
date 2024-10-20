@@ -94,9 +94,6 @@ function dmUiDraw() {
         textSize(DM_PARTS_SIZES.patternButton.height / 2)
         text(
           i + 1,
-          // DM_POSITIONS.patternButton.x +
-          //   i * (DM_PARTS_SIZES.patternButton.width + DM_PATTERN_BUTTON_GAP) +
-          //   DM_PARTS_SIZES.patternButton.width / 2,
           patternButtonStartX + (i * DM_PARTS_SIZES.patternButton.width + i * DM_PATTERN_BUTTON_GAP),
           DM_POSITIONS.patternButton.y + DM_PARTS_SIZES.patternButton.height / 2,
         )
@@ -132,9 +129,7 @@ function dmUiDesignGuideDraw() {
 
     ellipseMode(CENTER)
 
-    ellipse(DM_POSITIONS.knobArea.x, DM_POSITIONS.knobArea.y, size)
-    ellipse(DM_POSITIONS.controlButtonArea.x, DM_POSITIONS.controlButtonArea.y, size)
-    ellipse(DM_POSITIONS.patternButtonArea.x, DM_POSITIONS.patternButtonArea.y, size)
+    ellipse(DM_POSITIONS.controlArea.x, DM_POSITIONS.controlArea.y, size)
     ellipse(DM_POSITIONS.mainArea.x, DM_POSITIONS.mainArea.y, size)
     ellipse(DM_POSITIONS.seqArea.x, DM_POSITIONS.seqArea.y, size)
     ellipse(DM_POSITIONS.seqLight.x, DM_POSITIONS.seqLight.y, size)
@@ -148,5 +143,10 @@ function dmUiDesignGuideDraw() {
     ellipse(DM_POSITIONS.startButton.x, DM_POSITIONS.startButton.y, size)
     ellipse(DM_POSITIONS.stopButton.x, DM_POSITIONS.stopButton.y, size)
     ellipse(DM_POSITIONS.patternButton.x, DM_POSITIONS.patternButton.y, size)
+
+    textAlign(CENTER, CENTER)
+    textSize(20)
+    text(`mouseX: ${ceil(mouseX)}`, DM_WIDTH / 2, DM_HEIGHT / 2 - 20)
+    text(`mouseY: ${mouseY}`, DM_WIDTH / 2, DM_HEIGHT / 2 + 20)
   })
 }
