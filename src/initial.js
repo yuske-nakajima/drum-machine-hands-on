@@ -1,4 +1,4 @@
-function initial() {
+function dmInitial() {
   createCanvas(DM_WIDTH, DM_HEIGHT)
   colorMode(HSB)
 

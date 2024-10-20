@@ -17,7 +17,7 @@
   },
   // 各言語のformatterを設定
   // format設定
-  "editor.formatOnSave": false, // 保存時の自動フォーマットを無効
+  "editor.formatOnSave": true, // 保存時の自動フォーマットを有効化
   // Prettier設定
   "prettier.trailingComma": "all", // 末尾のカンマを常に付ける
   "prettier.tabWidth": 2, // インデント幅を2に設定
@@ -29,6 +29,6 @@
   "prettier.bracketSameLine": false, // 複数行の要素の閉じ括弧を新しい行に
   "prettier.htmlWhitespaceSensitivity": "css", // HTML空白文字の扱いをCSSに準拠
   "prettier.endOfLine": "lf", // 改行コードをLFに設定
-  "prettier.semi": false, // セミコロンを使用しない
+  "prettier.semi": false // セミコロンを使用しない
   // Prettier設定
 }
