@@ -8,6 +8,9 @@ function setup() {
 function draw() {
   // UI
   dmUiDraw()
+
+  // デザインガイド
+  // dmUiDesignGuideDraw()
 }
 
 // マウスが押された時に実行される処理

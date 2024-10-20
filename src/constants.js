@@ -43,9 +43,9 @@ const DM_POSITIONS = {
     x: 120,
     y: 130,
   },
-  seqLightArea: {
-    x: 120,
-    y: 450,
+  seqLight: {
+    x: 140,
+    y: 470,
   },
   // テキスト
   seqText: {
@@ -99,14 +99,6 @@ const DM_PARTS_SIZES = {
   mainArea: {
     width: 760,
     height: 400,
-  },
-  seqLightArea: {
-    width: 640,
-    height: 40,
-  },
-  seqLight: {
-    width: 20,
-    height: 20,
   },
   seqText: {
     width: 80,

@@ -10,7 +10,7 @@ function dmUiSetup() {
       // 考慮して線の太さを2倍にしている
       strokeWeight(DM_LINE_WEIGHT * 2)
 
-      rect(0, 0, width, height)
+      rect(0, 0, DM_WIDTH, DM_HEIGHT)
     })
 
     // ドラム・マシンの操作部分の背景
@@ -56,7 +56,6 @@ function dmUiSetup() {
       fill(DM_COLORS.seqMain)
       stroke(DM_COLORS.machineLine)
       strokeWeight(DM_LINE_WEIGHT)
-      const gap = DM_PARTS_SIZES.seqLightArea.width / DM_BEAT
 
       ellipseMode(CENTER)
       for (let i = 0; i < DM_BEAT; i++) {
@@ -65,10 +64,10 @@ function dmUiSetup() {
         strokeWeight(DM_LINE_WEIGHT * (isAccent ? 2 : 1))
 
         ellipse(
-          DM_POSITIONS.seqLightArea.x + i * gap + DM_PARTS_SIZES.seqLight.width,
-          DM_POSITIONS.seqLightArea.y + DM_PARTS_SIZES.seqLight.height,
-          DM_PARTS_SIZES.seqLight.width,
-          DM_PARTS_SIZES.seqLight.height,
+          DM_POSITIONS.seqLight.x + i * DM_PARTS_SIZES.seqCell.width,
+          DM_POSITIONS.seqLight.y,
+          DM_PARTS_SIZES.seqCell.width / 2,
+          DM_PARTS_SIZES.seqCell.height / 2,
         )
       }
     })

@@ -123,3 +123,30 @@ function dmUiDraw() {
     }
   })
 }
+
+function dmUiDesignGuideDraw() {
+  const size = 6
+  dmDrawBlock(() => {
+    noStroke()
+    fill(DM_COLORS.designGuide)
+
+    ellipseMode(CENTER)
+
+    ellipse(DM_POSITIONS.knobArea.x, DM_POSITIONS.knobArea.y, size)
+    ellipse(DM_POSITIONS.controlButtonArea.x, DM_POSITIONS.controlButtonArea.y, size)
+    ellipse(DM_POSITIONS.patternButtonArea.x, DM_POSITIONS.patternButtonArea.y, size)
+    ellipse(DM_POSITIONS.mainArea.x, DM_POSITIONS.mainArea.y, size)
+    ellipse(DM_POSITIONS.seqArea.x, DM_POSITIONS.seqArea.y, size)
+    ellipse(DM_POSITIONS.seqLight.x, DM_POSITIONS.seqLight.y, size)
+    ellipse(DM_POSITIONS.seqText.x, DM_POSITIONS.seqText.y, size)
+    ellipse(DM_POSITIONS.volumeText.x, DM_POSITIONS.volumeText.y, size)
+    ellipse(DM_POSITIONS.tempoText.x, DM_POSITIONS.tempoText.y, size)
+    ellipse(DM_POSITIONS.patternText.x, DM_POSITIONS.patternText.y, size)
+    ellipse(DM_POSITIONS.volumeKnob.x, DM_POSITIONS.volumeKnob.y, size)
+    ellipse(DM_POSITIONS.tempoKnob.x, DM_POSITIONS.tempoKnob.y, size)
+    ellipse(DM_POSITIONS.tempoDisplay.x, DM_POSITIONS.tempoDisplay.y, size)
+    ellipse(DM_POSITIONS.startButton.x, DM_POSITIONS.startButton.y, size)
+    ellipse(DM_POSITIONS.stopButton.x, DM_POSITIONS.stopButton.y, size)
+    ellipse(DM_POSITIONS.patternButton.x, DM_POSITIONS.patternButton.y, size)
+  })
+}
