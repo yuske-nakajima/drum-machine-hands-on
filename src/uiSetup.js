@@ -58,14 +58,15 @@ function dmUiSetup() {
       strokeWeight(DM_LINE_WEIGHT)
       const gap = DM_PARTS_SIZES.seqLightArea.width / DM_BEAT
 
+      ellipseMode(CENTER)
       for (let i = 0; i < DM_BEAT; i++) {
         // 4拍ごとにアクセントをつける
         const isAccent = i % 4 === 0
         strokeWeight(DM_LINE_WEIGHT * (isAccent ? 2 : 1))
 
         ellipse(
-          DM_POSITIONS.seqLightArea.x + i * gap + 10,
-          DM_POSITIONS.seqLightArea.y + 10,
+          DM_POSITIONS.seqLightArea.x + i * gap + DM_PARTS_SIZES.seqLight.width,
+          DM_POSITIONS.seqLightArea.y + DM_PARTS_SIZES.seqLight.height,
           DM_PARTS_SIZES.seqLight.width,
           DM_PARTS_SIZES.seqLight.height,
         )
@@ -75,7 +76,7 @@ function dmUiSetup() {
     // テキスト
     dmDrawBlock(() => {
       fill(DM_COLORS.machineText)
-      textSize(DM_PARTS_SIZES.seqTextArea.height / 4)
+      textSize(DM_PARTS_SIZES.seqText.height / 4)
       textStyle(BOLD)
       textAlign(CENTER, CENTER)
 
@@ -85,13 +86,12 @@ function dmUiSetup() {
       // Tempo
       text('TEMPO', DM_POSITIONS.tempoText.x, DM_POSITIONS.tempoText.y)
 
+      // Pattern
+      text('PATTERN', DM_POSITIONS.patternText.x, DM_POSITIONS.patternText.y)
+
       // 音色
       for (let i = 0; i < DM_MUSIC_LIST.length; i++) {
-        text(
-          DM_MUSIC_LIST[i].name,
-          DM_POSITIONS.seqTextArea.x + DM_PARTS_SIZES.seqTextArea.width / 2,
-          DM_POSITIONS.seqTextArea.y + i * DM_PARTS_SIZES.seqTextArea.height,
-        )
+        text(DM_MUSIC_LIST[i].name, DM_POSITIONS.seqText.x, DM_POSITIONS.seqText.y + i * DM_PARTS_SIZES.seqText.height)
       }
     })
   })
