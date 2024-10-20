@@ -30,6 +30,5 @@
   "prettier.htmlWhitespaceSensitivity": "css", // HTML空白文字の扱いをCSSに準拠
   "prettier.endOfLine": "lf", // 改行コードをLFに設定
   "prettier.semi": false, // セミコロンを使用しない
-  "livePreview.defaultPreviewPath": "/src/index.html",
   // Prettier設定
 }
