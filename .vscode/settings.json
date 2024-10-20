@@ -29,7 +29,7 @@
   "prettier.bracketSameLine": false, // 複数行の要素の閉じ括弧を新しい行に
   "prettier.htmlWhitespaceSensitivity": "css", // HTML空白文字の扱いをCSSに準拠
   "prettier.endOfLine": "lf", // 改行コードをLFに設定
-  "prettier.semi": false,
-  "livePreview.defaultPreviewPath": "/src/index.html", // セミコロンを使用しない
+  "prettier.semi": false, // セミコロンを使用しない
+  "livePreview.defaultPreviewPath": "/src/index.html",
   // Prettier設定
 }
