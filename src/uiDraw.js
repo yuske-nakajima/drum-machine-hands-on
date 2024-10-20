@@ -43,7 +43,7 @@ function dmUiDraw() {
       DM_PARTS_SIZES.controlButton.height,
     )
     dmDrawBlock(() => {
-      const gap = 10
+      const gap = DM_PARTS_SIZES.controlButton.width / 5
       fill(DM_COLORS.buttonLine)
       noStroke()
       triangle(
@@ -64,7 +64,7 @@ function dmUiDraw() {
       DM_PARTS_SIZES.controlButton.height,
     )
     dmDrawBlock(() => {
-      const gap = 10
+      const gap = DM_PARTS_SIZES.controlButton.width / 5
       fill(DM_COLORS.buttonLine)
       noStroke()
       rect(
