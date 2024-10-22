@@ -1,8 +1,10 @@
-// 定数
+// ------------------------------------------------------------
+// --- 定数
+// ------------------------------------------------------------
+// UI
 const DM_WIDTH = 800
 const DM_HEIGHT = 530
 const DM_LINE_WEIGHT = 2
-const DM_BEAT = 16
 const DM_PATTERN_NUM = 4
 const DM_AREA_GAP = 20
 const DM_PATTERN_BUTTON_GAP = 10
@@ -22,6 +24,7 @@ const DM_COLORS = {
   displayMain: null,
   displayText: null,
 }
+
 const DM_POSITIONS = {
   // エリア
   controlArea: {
@@ -83,6 +86,7 @@ const DM_POSITIONS = {
     y: 30,
   },
 }
+
 const DM_PARTS_SIZES = {
   // エリア
   controlArea: {
@@ -115,37 +119,58 @@ const DM_PARTS_SIZES = {
     height: 40,
   },
 }
+
 const DM_MUSIC_LIST = [
   {
     name: 'KICK',
-    func: null,
+    func: sounds.kick[6],
   },
   {
     name: 'SNARE',
-    func: null,
+    func: sounds.snare[0],
   },
   {
     name: 'CLOSED HH',
-    func: null,
+    func: sounds.hihat_c[7],
   },
   {
     name: 'OPEN HH',
-    func: null,
+    func: sounds.hihat_o[7],
   },
   {
     name: 'TOM',
-    func: null,
+    func: sounds.tom[4],
   },
   {
     name: 'CRASH',
-    func: null,
+    func: sounds.crash[7],
   },
   {
     name: 'COWBELL',
-    func: null,
+    func: sounds.cowbell[5],
   },
   {
     name: 'CLAP',
-    func: null,
+    func: sounds.clap[7],
   },
 ]
+
+// MUSIC
+const DM_BEAT = 16
+
+const DM_MIN_BPM = 0
+const DM_MAX_BPM = 240
+
+const DM_MIN_VOLUME = 0
+const DM_MAX_VOLUME = 2
+
+const DM_MUSIC_GAIN_LIST = [
+  0.8, // kick
+  0.8, // snare
+  0.8, // hihat_c
+  0.3, // hihat_o
+  1, // tom
+  0.6, // crash
+  0.28, // cowbell
+  3, // clap
+] // NOTE: 音量にばらつきがあるため、音量を調整している

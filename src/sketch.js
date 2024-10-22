@@ -9,6 +9,9 @@ function draw() {
   // UI
   dmUiDraw()
 
+  // 音楽再生
+  dmPlay()
+
   // デザインガイド
   // dmUiDesignGuideDraw()
 }
