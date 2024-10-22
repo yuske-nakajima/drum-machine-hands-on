@@ -14,3 +14,23 @@ function dmMousePressedBlock(pos, size, func) {
     func()
   }
 }
+
+// ローカルストレージから値を取得または初期化する関数
+function dmGetOrInitializeValue(key, defaultValue) {
+  const storedValue = localStorage.getItem(key)
+  if (storedValue !== null) {
+    return JSON.parse(storedValue)
+  }
+  dmSaveToLocalStorage(key, defaultValue)
+  return defaultValue
+}
+
+// ローカルストレージに値を保存する関数
+function dmSaveToLocalStorage(key, value) {
+  const existingValue = localStorage.getItem(key)
+  if (existingValue !== null) {
+    localStorage.removeItem(key)
+  }
+  localStorage.setItem(key, JSON.stringify(value))
+  return value
+}

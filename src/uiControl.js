@@ -16,7 +16,7 @@ function dmMousePressed() {
       y: DM_POSITIONS.patternButton.y,
     }
     dmMousePressedBlock(pos, DM_PARTS_SIZES.patternButton, () => {
-      dmCurrentPattern = i + 1
+      dmCurrentPattern = dmSaveToLocalStorage('dmCurrentPattern', i + 1)
     })
   }
 
@@ -29,6 +29,7 @@ function dmMousePressed() {
       }
       dmMousePressedBlock(pos, DM_PARTS_SIZES.seqCell, () => {
         dmBeatData[dmCurrentPattern][i][j] = !dmBeatData[dmCurrentPattern][i][j]
+        dmSaveToLocalStorage('dmBeatData', dmBeatData)
       })
     }
   }
@@ -57,11 +58,11 @@ function dmMousePressed() {
 function mouseDragged() {
   if (isDraggingVolume) {
     const diffY = mouseY - lastMouseY
-    dmVolume = constrain(dmVolume + diffY * 0.001, DM_MIN_VOLUME, DM_MAX_VOLUME)
+    dmVolume = dmSaveToLocalStorage('dmVolume', constrain(dmVolume + diffY * 0.001, DM_MIN_VOLUME, DM_MAX_VOLUME))
   }
   if (isDraggingTempo) {
     const diffY = mouseY - lastMouseY
-    dmBpm = ceil(constrain(dmBpm + diffY * 0.05, DM_MIN_BPM, DM_MAX_BPM))
+    dmBpm = dmSaveToLocalStorage('dmBpm', ceil(constrain(dmBpm + diffY * 0.05, DM_MIN_BPM, DM_MAX_BPM)))
   }
 }
 
