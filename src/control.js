@@ -11,16 +11,26 @@ function dmMousePressed() {
 
   // パターン
   for (let i = 0; i < DM_PATTERN_NUM; i++) {
-    dmMousePressedBlock(
-      {
-        x: DM_POSITIONS.patternButton.x + i * (DM_PARTS_SIZES.patternButton.width + DM_PATTERN_BUTTON_GAP),
-        y: DM_POSITIONS.patternButton.y,
-      },
-      DM_PARTS_SIZES.patternButton,
-      () => {
-        dmCurrentPattern = i + 1
-      },
-    )
+    const pos = {
+      x: DM_POSITIONS.patternButton.x + i * (DM_PARTS_SIZES.patternButton.width + DM_PATTERN_BUTTON_GAP),
+      y: DM_POSITIONS.patternButton.y,
+    }
+    dmMousePressedBlock(pos, DM_PARTS_SIZES.patternButton, () => {
+      dmCurrentPattern = i + 1
+    })
+  }
+
+  // シーケンサー
+  for (let i = 0; i < DM_MUSIC_LIST.length; i++) {
+    for (let j = 0; j < DM_BEAT; j++) {
+      const pos = {
+        x: DM_POSITIONS.seqArea.x + j * DM_PARTS_SIZES.seqCell.width,
+        y: DM_POSITIONS.seqArea.y + i * DM_PARTS_SIZES.seqCell.height,
+      }
+      dmMousePressedBlock(pos, DM_PARTS_SIZES.seqCell, () => {
+        dmBeatData[dmCurrentPattern][i][j] = !dmBeatData[dmCurrentPattern][i][j]
+      })
+    }
   }
 }
 

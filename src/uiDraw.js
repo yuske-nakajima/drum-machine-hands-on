@@ -14,7 +14,6 @@ function dmUiDraw() {
     ellipse(DM_POSITIONS.tempoKnob.x, DM_POSITIONS.tempoKnob.y, DM_PARTS_SIZES.knob.width, DM_PARTS_SIZES.knob.height)
   })
 
-  // ディスプレイの描画
   dmDrawBlock(() => {
     fill(DM_COLORS.displayMain)
     stroke(DM_COLORS.machineLine)
@@ -119,10 +118,13 @@ function dmUiDraw() {
   dmDrawBlock(() => {
     for (let y = 0; y < DM_MUSIC_LIST.length; y++) {
       for (let x = 0; x < DM_BEAT; x++) {
-        const isAccent = x % 4 === 0
-        fill(isAccent ? DM_COLORS.seqAccent : DM_COLORS.seqMain)
         stroke(DM_COLORS.machineLight)
         strokeWeight(DM_LINE_WEIGHT)
+
+        const isAccent = x % 4 === 0
+        let fillColor = isAccent ? DM_COLORS.seqAccent : DM_COLORS.seqMain
+        fillColor = dmIsPlaying && dmOnBeat === x ? DM_COLORS.buttonNormal : fillColor
+        fill(fillColor)
 
         rect(
           DM_POSITIONS.seqArea.x + x * DM_PARTS_SIZES.seqCell.width,
@@ -130,7 +132,35 @@ function dmUiDraw() {
           DM_PARTS_SIZES.seqCell.width,
           DM_PARTS_SIZES.seqCell.height,
         )
+
+        fillColor = dmBeatData[dmCurrentPattern][y][x] ? DM_COLORS.displayMain : fillColor
+        fill(fillColor)
+        noStroke()
+        rect(
+          DM_POSITIONS.seqArea.x + x * DM_PARTS_SIZES.seqCell.width + DM_PARTS_SIZES.seqCell.width / 4,
+          DM_POSITIONS.seqArea.y + y * DM_PARTS_SIZES.seqCell.height + DM_PARTS_SIZES.seqCell.width / 4,
+          DM_PARTS_SIZES.seqCell.width / 2,
+          DM_PARTS_SIZES.seqCell.height / 2,
+        )
       }
+    }
+  })
+
+  // シーケンスライト
+  dmDrawBlock(() => {
+    noStroke()
+
+    ellipseMode(CENTER)
+    for (let i = 0; i < DM_BEAT; i++) {
+      const fillColor = dmIsPlaying && dmOnBeat === i ? DM_COLORS.buttonActive : DM_COLORS.seqMain
+      fill(fillColor)
+
+      ellipse(
+        DM_POSITIONS.seqLight.x + i * DM_PARTS_SIZES.seqCell.width,
+        DM_POSITIONS.seqLight.y,
+        DM_PARTS_SIZES.seqCell.width / 3,
+        DM_PARTS_SIZES.seqCell.height / 3,
+      )
     }
   })
 }
