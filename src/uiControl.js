@@ -32,6 +32,40 @@ function dmMousePressed() {
       })
     }
   }
+
+  // Volumeノブ
+  const volumeKnobPos = {
+    x: DM_POSITIONS.volumeKnob.x - DM_PARTS_SIZES.knob.width / 2,
+    y: DM_POSITIONS.volumeKnob.y - DM_PARTS_SIZES.knob.height / 2,
+  }
+  dmMousePressedBlock(volumeKnobPos, DM_PARTS_SIZES.knob, () => {
+    isDraggingVolume = true
+    lastMouseY = mouseY
+  })
+
+  // Tempoノブ
+  const tempoKnobPos = {
+    x: DM_POSITIONS.tempoKnob.x - DM_PARTS_SIZES.knob.width / 2,
+    y: DM_POSITIONS.tempoKnob.y - DM_PARTS_SIZES.knob.height / 2,
+  }
+  dmMousePressedBlock(tempoKnobPos, DM_PARTS_SIZES.knob, () => {
+    isDraggingTempo = true
+    lastMouseY = mouseY
+  })
 }
 
-function dmMouseReleased() {}
+function mouseDragged() {
+  if (isDraggingVolume) {
+    const diffY = mouseY - lastMouseY
+    dmVolume = constrain(dmVolume + diffY * 0.001, DM_MIN_VOLUME, DM_MAX_VOLUME)
+  }
+  if (isDraggingTempo) {
+    const diffY = mouseY - lastMouseY
+    dmBpm = ceil(constrain(dmBpm + diffY * 0.05, DM_MIN_BPM, DM_MAX_BPM))
+  }
+}
+
+function dmMouseReleased() {
+  isDraggingVolume = false
+  isDraggingTempo = false
+}

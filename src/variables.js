@@ -4,6 +4,9 @@
 // --- UI
 // 1 ~ DM_PATTERN_NUM
 let dmCurrentPattern = 1
+let isDraggingVolume = false
+let isDraggingTempo = false
+let lastMouseY = 0
 
 // --- MUSIC
 let dmLastBeatTime = 0

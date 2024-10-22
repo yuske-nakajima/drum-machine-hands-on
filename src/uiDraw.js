@@ -14,6 +14,7 @@ function dmUiDraw() {
     ellipse(DM_POSITIONS.tempoKnob.x, DM_POSITIONS.tempoKnob.y, DM_PARTS_SIZES.knob.width, DM_PARTS_SIZES.knob.height)
   })
 
+  // ディスプレイの描画
   dmDrawBlock(() => {
     fill(DM_COLORS.displayMain)
     stroke(DM_COLORS.machineLine)
@@ -26,6 +27,16 @@ function dmUiDraw() {
       DM_PARTS_SIZES.tempoDisplay.width,
       DM_PARTS_SIZES.tempoDisplay.height,
     )
+  })
+
+  // ディスプレイテキスト
+  dmDrawBlock(() => {
+    fill(DM_COLORS.displayText)
+    noStroke()
+    textAlign(CENTER, CENTER)
+    textStyle(BOLD)
+    textSize(DM_PARTS_SIZES.tempoDisplay.height / 2)
+    text(dmBpm, DM_POSITIONS.tempoDisplay.x, DM_POSITIONS.tempoDisplay.y)
   })
 
   // 再生ボタン
@@ -162,6 +173,34 @@ function dmUiDraw() {
         DM_PARTS_SIZES.seqCell.height / 3,
       )
     }
+  })
+
+  // Volumeノブ
+  dmDrawBlock(() => {
+    fill(DM_COLORS.buttonLine)
+    noStroke()
+
+    ellipseMode(CENTER)
+    const angle = map(dmVolume, DM_MIN_VOLUME, DM_MAX_VOLUME, 0, TWO_PI) + HALF_PI
+    const knobRadius = DM_PARTS_SIZES.knob.width / 3.5
+    const x = DM_POSITIONS.volumeKnob.x + knobRadius * cos(angle)
+    const y = DM_POSITIONS.volumeKnob.y + knobRadius * sin(angle)
+
+    ellipse(x, y, DM_PARTS_SIZES.knob.width / 4, DM_PARTS_SIZES.knob.height / 4)
+  })
+
+  // Tempoノブ
+  dmDrawBlock(() => {
+    fill(DM_COLORS.buttonLine)
+    noStroke()
+
+    ellipseMode(CENTER)
+    const angle = map(dmBpm, DM_MIN_BPM, DM_MAX_BPM, 0, TWO_PI) + HALF_PI
+    const knobRadius = DM_PARTS_SIZES.knob.width / 3.5
+    const x = DM_POSITIONS.tempoKnob.x + knobRadius * cos(angle)
+    const y = DM_POSITIONS.tempoKnob.y + knobRadius * sin(angle)
+
+    ellipse(x, y, DM_PARTS_SIZES.knob.width / 4, DM_PARTS_SIZES.knob.height / 4)
   })
 }
 
