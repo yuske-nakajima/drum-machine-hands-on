@@ -55,7 +55,7 @@ function dmMousePressed() {
   })
 }
 
-function mouseDragged() {
+function dmMouseDragged() {
   if (isDraggingVolume) {
     const diffY = mouseY - lastMouseY
     dmVolume = dmSaveToLocalStorage('dmVolume', constrain(dmVolume + diffY * 0.001, DM_MIN_VOLUME, DM_MAX_VOLUME))

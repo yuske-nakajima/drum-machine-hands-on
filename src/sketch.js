@@ -21,6 +21,11 @@ function mousePressed() {
   dmMousePressed()
 }
 
+// マウスが動いた時に実行される処理
+function mouseDragged() {
+  dmMouseDragged()
+}
+
 // マウスが離された時に実行される処理
 function mouseReleased() {
   dmMouseReleased()
