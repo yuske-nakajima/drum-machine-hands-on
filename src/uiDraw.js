@@ -1,17 +1,39 @@
 function dmUiDraw() {
   //ノブの描画
+  // Volumeノブ
   dmDrawBlock(() => {
+    ellipseMode(CENTER)
+
     fill(DM_COLORS.buttonNormal)
     stroke(DM_COLORS.buttonLine)
     strokeWeight(DM_LINE_WEIGHT)
-
-    ellipseMode(CENTER)
-
-    // Volumeノブ
     ellipse(DM_POSITIONS.volumeKnob.x, DM_POSITIONS.volumeKnob.y, DM_PARTS_SIZES.knob.width, DM_PARTS_SIZES.knob.height)
 
-    // Tempoノブ
+    fill(DM_COLORS.buttonLine)
+    noStroke()
+    const angle = map(dmVolume, DM_MIN_VOLUME, DM_MAX_VOLUME, 0, TWO_PI) + HALF_PI
+    const knobRadius = DM_PARTS_SIZES.knob.width / 3.5
+    const x = DM_POSITIONS.volumeKnob.x + knobRadius * cos(angle)
+    const y = DM_POSITIONS.volumeKnob.y + knobRadius * sin(angle)
+    ellipse(x, y, DM_PARTS_SIZES.knob.width / 4, DM_PARTS_SIZES.knob.height / 4)
+  })
+
+  // Tempoノブ
+  dmDrawBlock(() => {
+    ellipseMode(CENTER)
+
+    fill(DM_COLORS.buttonNormal)
+    stroke(DM_COLORS.buttonLine)
+    strokeWeight(DM_LINE_WEIGHT)
     ellipse(DM_POSITIONS.tempoKnob.x, DM_POSITIONS.tempoKnob.y, DM_PARTS_SIZES.knob.width, DM_PARTS_SIZES.knob.height)
+
+    fill(DM_COLORS.buttonLine)
+    noStroke()
+    const angle = map(dmBpm, DM_MIN_BPM, DM_MAX_BPM, 0, TWO_PI) + HALF_PI
+    const knobRadius = DM_PARTS_SIZES.knob.width / 3.5
+    const x = DM_POSITIONS.tempoKnob.x + knobRadius * cos(angle)
+    const y = DM_POSITIONS.tempoKnob.y + knobRadius * sin(angle)
+    ellipse(x, y, DM_PARTS_SIZES.knob.width / 4, DM_PARTS_SIZES.knob.height / 4)
   })
 
   // ディスプレイの描画
@@ -19,7 +41,6 @@ function dmUiDraw() {
     fill(DM_COLORS.displayMain)
     stroke(DM_COLORS.machineLine)
     strokeWeight(DM_LINE_WEIGHT)
-
     rectMode(CENTER)
     rect(
       DM_POSITIONS.tempoDisplay.x,
@@ -27,10 +48,7 @@ function dmUiDraw() {
       DM_PARTS_SIZES.tempoDisplay.width,
       DM_PARTS_SIZES.tempoDisplay.height,
     )
-  })
 
-  // ディスプレイテキスト
-  dmDrawBlock(() => {
     fill(DM_COLORS.displayText)
     noStroke()
     textAlign(CENTER, CENTER)
@@ -155,12 +173,9 @@ function dmUiDraw() {
         )
       }
     }
-  })
 
-  // シーケンスライト
-  dmDrawBlock(() => {
+    // ライト
     noStroke()
-
     ellipseMode(CENTER)
     for (let i = 0; i < DM_BEAT; i++) {
       const fillColor = dmIsPlaying && dmOnBeat === i ? DM_COLORS.buttonActive : DM_COLORS.seqMain
@@ -173,33 +188,5 @@ function dmUiDraw() {
         DM_PARTS_SIZES.seqCell.height / 3,
       )
     }
-  })
-
-  // Volumeノブ
-  dmDrawBlock(() => {
-    fill(DM_COLORS.buttonLine)
-    noStroke()
-
-    ellipseMode(CENTER)
-    const angle = map(dmVolume, DM_MIN_VOLUME, DM_MAX_VOLUME, 0, TWO_PI) + HALF_PI
-    const knobRadius = DM_PARTS_SIZES.knob.width / 3.5
-    const x = DM_POSITIONS.volumeKnob.x + knobRadius * cos(angle)
-    const y = DM_POSITIONS.volumeKnob.y + knobRadius * sin(angle)
-
-    ellipse(x, y, DM_PARTS_SIZES.knob.width / 4, DM_PARTS_SIZES.knob.height / 4)
-  })
-
-  // Tempoノブ
-  dmDrawBlock(() => {
-    fill(DM_COLORS.buttonLine)
-    noStroke()
-
-    ellipseMode(CENTER)
-    const angle = map(dmBpm, DM_MIN_BPM, DM_MAX_BPM, 0, TWO_PI) + HALF_PI
-    const knobRadius = DM_PARTS_SIZES.knob.width / 3.5
-    const x = DM_POSITIONS.tempoKnob.x + knobRadius * cos(angle)
-    const y = DM_POSITIONS.tempoKnob.y + knobRadius * sin(angle)
-
-    ellipse(x, y, DM_PARTS_SIZES.knob.width / 4, DM_PARTS_SIZES.knob.height / 4)
   })
 }
