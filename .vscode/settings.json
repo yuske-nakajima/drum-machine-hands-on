@@ -1,4 +1,6 @@
 {
+  // 自動保存設定
+  "files.autoSave": "afterDelay", // 一定時間後に自動保存
   // 各言語のformatterを設定
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -30,6 +32,8 @@
   "prettier.htmlWhitespaceSensitivity": "css", // HTML空白文字の扱いをCSSに準拠
   "prettier.endOfLine": "lf", // 改行コードをLFに設定
   "prettier.semi": false, // セミコロンを使用しない
-  // Prettier設定
-  "todo-tree.filtering.excludeGlobs": ["**/src/lib/p5.js"]
+  // todo-tree設定
+  "todo-tree.filtering.excludeGlobs": ["**/src/lib/p5.js"], // todo-treeの除外ファイルを設定
+  // live-server設定
+  "liveServer.settings.root": "/src" // ルートディレクトリをsrcに設定
 }
