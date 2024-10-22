@@ -1,10 +1,11 @@
 // ------------------------------------------------------------
 // --- 変数
 // ------------------------------------------------------------
-// UI
-let dmCurrentPattern = 1 // 1 ~ DM_PATTERN_NUM
+// --- UI
+// 1 ~ DM_PATTERN_NUM
+let dmCurrentPattern = 1
 
-// MUSIC
+// --- MUSIC
 let dmLastBeatTime = 0
 let dmBpm = 120
 let dmBeatCount = 0

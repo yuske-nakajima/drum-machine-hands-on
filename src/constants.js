@@ -1,7 +1,7 @@
 // ------------------------------------------------------------
 // --- 定数
 // ------------------------------------------------------------
-// UI
+// --- UI
 const DM_WIDTH = 800
 const DM_HEIGHT = 530
 const DM_LINE_WEIGHT = 2
@@ -155,7 +155,7 @@ const DM_MUSIC_LIST = [
   },
 ]
 
-// MUSIC
+// --- MUSIC
 const DM_BEAT = 16
 
 const DM_MIN_BPM = 0
@@ -164,6 +164,7 @@ const DM_MAX_BPM = 240
 const DM_MIN_VOLUME = 0
 const DM_MAX_VOLUME = 2
 
+// NOTE: 音量にばらつきがあるため、音量を調整している
 const DM_MUSIC_GAIN_LIST = [
   0.8, // kick
   0.8, // snare
@@ -173,4 +174,4 @@ const DM_MUSIC_GAIN_LIST = [
   0.6, // crash
   0.28, // cowbell
   3, // clap
-] // NOTE: 音量にばらつきがあるため、音量を調整している
+]
