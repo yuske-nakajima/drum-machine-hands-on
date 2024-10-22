@@ -29,56 +29,70 @@ function dmUiDraw() {
     )
   })
 
-  // ボタン
+  // 再生ボタン
   dmDrawBlock(() => {
-    fill(DM_COLORS.buttonNormal)
     stroke(DM_COLORS.buttonLine)
     strokeWeight(DM_LINE_WEIGHT)
 
-    // 再生ボタン
+    const buttonColor = dmIsPlaying ? DM_COLORS.buttonActive : DM_COLORS.buttonNormal
+    fill(buttonColor)
     rect(
       DM_POSITIONS.startButton.x,
       DM_POSITIONS.startButton.y,
       DM_PARTS_SIZES.controlButton.width,
       DM_PARTS_SIZES.controlButton.height,
     )
-    dmDrawBlock(() => {
-      const gap = DM_PARTS_SIZES.controlButton.width / 5
-      fill(DM_COLORS.buttonLine)
-      noStroke()
-      triangle(
-        DM_POSITIONS.startButton.x + gap,
-        DM_POSITIONS.startButton.y + gap,
-        DM_POSITIONS.startButton.x + gap,
-        DM_POSITIONS.startButton.y + DM_PARTS_SIZES.controlButton.height - gap,
-        DM_POSITIONS.startButton.x + DM_PARTS_SIZES.controlButton.width - gap,
-        DM_POSITIONS.startButton.y + DM_PARTS_SIZES.controlButton.height / 2,
-      )
-    })
 
-    // 停止ボタン
+    const gap = DM_PARTS_SIZES.controlButton.width / 5
+    fill(DM_COLORS.buttonLine)
+    noStroke()
+    triangle(
+      DM_POSITIONS.startButton.x + gap,
+      DM_POSITIONS.startButton.y + gap,
+      DM_POSITIONS.startButton.x + gap,
+      DM_POSITIONS.startButton.y + DM_PARTS_SIZES.controlButton.height - gap,
+      DM_POSITIONS.startButton.x + DM_PARTS_SIZES.controlButton.width - gap,
+      DM_POSITIONS.startButton.y + DM_PARTS_SIZES.controlButton.height / 2,
+    )
+  })
+
+  // 停止ボタン
+  dmDrawBlock(() => {
+    stroke(DM_COLORS.buttonLine)
+    strokeWeight(DM_LINE_WEIGHT)
+
+    let buttonColor = dmIsPlaying ? DM_COLORS.buttonNormal : DM_COLORS.buttonActive
+    buttonColor = dmIsStopping ? DM_COLORS.buttonStopping : buttonColor
+    fill(buttonColor)
     rect(
       DM_POSITIONS.stopButton.x,
       DM_POSITIONS.stopButton.y,
       DM_PARTS_SIZES.controlButton.width,
       DM_PARTS_SIZES.controlButton.height,
     )
-    dmDrawBlock(() => {
-      const gap = DM_PARTS_SIZES.controlButton.width / 5
-      fill(DM_COLORS.buttonLine)
-      noStroke()
-      rect(
-        DM_POSITIONS.stopButton.x + gap,
-        DM_POSITIONS.stopButton.y + gap,
-        DM_PARTS_SIZES.controlButton.width - gap * 2,
-        DM_PARTS_SIZES.controlButton.height - gap * 2,
-      )
-    })
 
-    // パターンボタン
-    const patternButtonStartX = DM_POSITIONS.patternButton.x + DM_PARTS_SIZES.patternButton.width / 2
+    // 停止ボタンマーク
+    const gap = DM_PARTS_SIZES.controlButton.width / 5
+    fill(DM_COLORS.buttonLine)
+    noStroke()
+    rect(
+      DM_POSITIONS.stopButton.x + gap,
+      DM_POSITIONS.stopButton.y + gap,
+      DM_PARTS_SIZES.controlButton.width - gap * 2,
+      DM_PARTS_SIZES.controlButton.height - gap * 2,
+    )
+  })
+
+  // パターンボタン
+  dmDrawBlock(() => {
+    stroke(DM_COLORS.buttonLine)
+    strokeWeight(DM_LINE_WEIGHT)
+
+    const patternButtonTextStartX = DM_POSITIONS.patternButton.x + DM_PARTS_SIZES.patternButton.width / 2
     for (let i = 0; i < DM_PATTERN_NUM; i++) {
       // ボタン
+      const buttonColor = dmCurrentPattern === i + 1 ? DM_COLORS.buttonActive : DM_COLORS.buttonNormal
+      fill(buttonColor)
       rect(
         DM_POSITIONS.patternButton.x + i * (DM_PARTS_SIZES.patternButton.width + DM_PATTERN_BUTTON_GAP),
         DM_POSITIONS.patternButton.y,
@@ -94,7 +108,7 @@ function dmUiDraw() {
         textSize(DM_PARTS_SIZES.patternButton.height / 2)
         text(
           i + 1,
-          patternButtonStartX + (i * DM_PARTS_SIZES.patternButton.width + i * DM_PATTERN_BUTTON_GAP),
+          patternButtonTextStartX + (i * DM_PARTS_SIZES.patternButton.width + i * DM_PATTERN_BUTTON_GAP),
           DM_POSITIONS.patternButton.y + DM_PARTS_SIZES.patternButton.height / 2,
         )
       })

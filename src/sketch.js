@@ -17,7 +17,11 @@ function draw() {
 }
 
 // マウスが押された時に実行される処理
-function mousePressed() {}
+function mousePressed() {
+  dmMousePressed()
+}
 
 // マウスが離された時に実行される処理
-function mouseReleased() {}
+function mouseReleased() {
+  dmMouseReleased()
+}
