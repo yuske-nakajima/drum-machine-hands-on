@@ -11,6 +11,9 @@ function draw() {
 
   // 音楽再生
   dmPlay()
+
+  // デザインガイド
+  dmUiDesignGuideDraw()
 }
 
 // マウスが押された時に実行される処理
