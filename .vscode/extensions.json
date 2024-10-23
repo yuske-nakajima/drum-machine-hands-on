@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dominikasinski.p5-snippets-and-tools",
+    "ritwickdey.liveserver",
+    "gruntfuggly.todo-tree"
+  ]
+}
