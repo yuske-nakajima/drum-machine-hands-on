@@ -13,7 +13,7 @@ function draw() {
   dmPlay()
 
   // デザインガイド
-  dmUiDesignGuideDraw()
+  // dmUiDesignGuideDraw()
 }
 
 // マウスが押された時に実行される処理
