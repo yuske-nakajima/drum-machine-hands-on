@@ -17,7 +17,8 @@ function dmPlay() {
   for (let i = 0; i < DM_MUSIC_LIST.length; i++) {
     for (let j = 0; j < DM_BEAT; j++) {
       if (dmOnBeat === j && dmBeatData[dmCurrentPattern][i][j]) {
-        DM_MUSIC_LIST[i].func(DM_MUSIC_GAIN_LIST[i] * dmVolume)
+        const { func, gain } = DM_MUSIC_LIST[i]
+        func(gain * dmVolume)
       }
     }
   }

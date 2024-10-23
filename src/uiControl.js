@@ -41,7 +41,7 @@ function dmMousePressed() {
   }
   dmMousePressedBlock(volumeKnobPos, DM_PARTS_SIZES.knob, () => {
     isDraggingVolume = true
-    lastMouseY = mouseY
+    lastMouse = { x: mouseX, y: mouseY }
   })
 
   // Tempoノブ
@@ -51,18 +51,18 @@ function dmMousePressed() {
   }
   dmMousePressedBlock(tempoKnobPos, DM_PARTS_SIZES.knob, () => {
     isDraggingTempo = true
-    lastMouseY = mouseY
+    lastMouse = { x: mouseX, y: mouseY }
   })
 }
 
 function dmMouseDragged() {
   if (isDraggingVolume) {
-    const diffY = mouseY - lastMouseY
-    dmVolume = dmSaveToLocalStorage('dmVolume', constrain(dmVolume + diffY * 0.001, DM_MIN_VOLUME, DM_MAX_VOLUME))
+    const diff = mouseX + mouseY - (lastMouse.x + lastMouse.y)
+    dmVolume = dmSaveToLocalStorage('dmVolume', constrain(dmVolume + diff * 0.001, DM_MIN_VOLUME, DM_MAX_VOLUME))
   }
   if (isDraggingTempo) {
-    const diffY = mouseY - lastMouseY
-    dmBpm = dmSaveToLocalStorage('dmBpm', ceil(constrain(dmBpm + diffY * 0.05, DM_MIN_BPM, DM_MAX_BPM)))
+    const diff = mouseX + mouseY - (lastMouse.x + lastMouse.y)
+    dmBpm = dmSaveToLocalStorage('dmBpm', ceil(constrain(dmBpm + diff * 0.05, DM_MIN_BPM, DM_MAX_BPM)))
   }
 }
 

@@ -62,6 +62,7 @@ function dmUiSetup() {
     // テキスト
     dmDrawBlock(() => {
       fill(DM_COLORS.machineText)
+      noStroke()
       textSize(DM_PARTS_SIZES.seqCell.height / 4)
       textStyle(BOLD)
       textAlign(CENTER, CENTER)
