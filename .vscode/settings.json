@@ -1,4 +1,6 @@
 {
+  // 基本
+  "editor.rulers": [80], // 80文字目にルーラーを表示
   // 自動保存設定
   "files.autoSave": "afterDelay", // 一定時間後に自動保存
   // 各言語のformatterを設定
@@ -24,7 +26,7 @@
   "prettier.trailingComma": "all", // 末尾のカンマを常に付ける
   "prettier.tabWidth": 2, // インデント幅を2に設定
   "prettier.singleQuote": true, // シングルクォートを使用
-  "prettier.printWidth": 120, // 1行の最大文字数を100に設定
+  "prettier.printWidth": 80, // 1行の最大文字数を80に設定
   "prettier.useTabs": false, // タブの代わりにスペースを使用
   "prettier.quoteProps": "as-needed", // プロパティの引用符は必要な場合のみ
   "prettier.bracketSpacing": true, // オブジェクトリテラルの括弧内にスペースを入れる
