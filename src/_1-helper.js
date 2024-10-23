@@ -9,7 +9,12 @@ function dmDrawBlock(func) {
 }
 
 function dmMousePressedBlock(pos, size, func) {
-  if (pos.x <= mouseX && mouseX <= pos.x + size.width && pos.y <= mouseY && mouseY <= pos.y + size.height) {
+  if (
+    pos.x <= mouseX &&
+    mouseX <= pos.x + size.width &&
+    pos.y <= mouseY &&
+    mouseY <= pos.y + size.height
+  ) {
     func()
   }
 }

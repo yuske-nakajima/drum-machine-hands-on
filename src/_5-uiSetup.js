@@ -22,7 +22,8 @@ function dmUiSetup() {
     for (let i = 0; i < 3; i++) {
       // TODO: 2. 各操作エリアの背景を描こう！
       rect(
-        DM_POSITIONS.controlArea.x + i * (DM_PARTS_SIZES.controlArea.width + DM_AREA_GAP),
+        DM_POSITIONS.controlArea.x +
+          i * (DM_PARTS_SIZES.controlArea.width + DM_AREA_GAP),
         DM_POSITIONS.controlArea.y,
         DM_PARTS_SIZES.controlArea.width,
         DM_PARTS_SIZES.controlArea.height,
@@ -53,7 +54,9 @@ function dmUiSetup() {
 
       // TODO: 4. シーケンスライトの背景を描こう！
       ellipse(
-        DM_POSITIONS.seqLight.x + i * DM_PARTS_SIZES.seqCell.width + DM_PARTS_SIZES.seqCell.width / 4,
+        DM_POSITIONS.seqLight.x +
+          i * DM_PARTS_SIZES.seqCell.width +
+          DM_PARTS_SIZES.seqCell.width / 4,
         DM_POSITIONS.seqLight.y + DM_PARTS_SIZES.seqCell.height / 4,
         DM_PARTS_SIZES.seqCell.width / 2,
         DM_PARTS_SIZES.seqCell.height / 2,
@@ -87,7 +90,9 @@ function dmUiSetup() {
       text(
         DM_MUSIC_LIST[i].name,
         DM_POSITIONS.seqText.x + (DM_PARTS_SIZES.seqCell.width * 2) / 2,
-        DM_POSITIONS.seqText.y + i * DM_PARTS_SIZES.seqCell.height + (DM_PARTS_SIZES.seqCell.height) / 2,
+        DM_POSITIONS.seqText.y +
+          i * DM_PARTS_SIZES.seqCell.height +
+          DM_PARTS_SIZES.seqCell.height / 2,
       )
     }
   })
