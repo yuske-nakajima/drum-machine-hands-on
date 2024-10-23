@@ -1,4 +1,6 @@
 {
+  // 基本
+  "editor.rulers": [120], // 120文字目にルーラーを表示
   // 自動保存設定
   "files.autoSave": "afterDelay", // 一定時間後に自動保存
   // 各言語のformatterを設定
