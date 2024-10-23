@@ -18,7 +18,7 @@ function dmUiSetup() {
     stroke(DM_COLORS.machineLine)
 
     // volume・tempoエリア controlエリア patternエリアの描画
-    for (let i = 0; i < 3; i++) {
+    for (let xi = 0; xi < 3; xi++) {
       // TODO: 2. 各操作エリアの背景を描こう！
     }
 
@@ -33,9 +33,9 @@ function dmUiSetup() {
     strokeWeight(DM_LINE_WEIGHT)
 
     ellipseMode(CORNER)
-    for (let i = 0; i < DM_BEAT; i++) {
+    for (let xi = 0; xi < DM_BEAT; xi++) {
       // 4拍ごとにアクセントをつける
-      const isAccent = i % 4 === 0
+      const isAccent = xi % 4 === 0
       strokeWeight(DM_LINE_WEIGHT * (isAccent ? 2 : 1))
 
       // TODO: 4. シーケンスライトの背景を描こう！
@@ -60,7 +60,7 @@ function dmUiSetup() {
     // TODO: 7. Patternのテキストを描こう！
 
     // 音色
-    for (let i = 0; i < DM_MUSIC_LIST.length; i++) {
+    for (let yi = 0; yi < DM_MUSIC_LIST.length; yi++) {
       // TODO: 8. 音色タイトルのテキストを描こう！
     }
   })

@@ -88,10 +88,10 @@ function dmUiDraw() {
 
     const patternButtonTextStartX =
       DM_POSITIONS.patternButton.x + DM_PARTS_SIZES.patternButton.width / 2
-    for (let i = 0; i < DM_PATTERN_NUM; i++) {
+    for (let xi = 0; xi < DM_PATTERN_NUM; xi++) {
       // ボタン
       const buttonColor =
-        dmCurrentPattern === i + 1
+        dmCurrentPattern === xi + 1
           ? DM_COLORS.buttonActive
           : DM_COLORS.buttonNormal
       fill(buttonColor)
@@ -134,9 +134,9 @@ function dmUiDraw() {
 
     // ライト
     noStroke()
-    for (let i = 0; i < DM_BEAT; i++) {
+    for (let xi = 0; xi < DM_BEAT; xi++) {
       const fillColor =
-        dmIsPlaying && dmOnBeat === i
+        dmIsPlaying && dmOnBeat === xi
           ? DM_COLORS.buttonActive
           : DM_COLORS.seqMain
       fill(fillColor)

@@ -18,11 +18,11 @@ function dmMousePressed() {
   )
 
   // パターン
-  for (let i = 0; i < DM_PATTERN_NUM; i++) {
+  for (let xi = 0; xi < DM_PATTERN_NUM; xi++) {
     const pos = {
       x:
         DM_POSITIONS.patternButton.x +
-        i * (DM_PARTS_SIZES.patternButton.width + DM_PATTERN_BUTTON_GAP),
+        xi * (DM_PARTS_SIZES.patternButton.width + DM_PATTERN_BUTTON_GAP),
       y: DM_POSITIONS.patternButton.y,
     }
     dmMousePressedBlock(pos, DM_PARTS_SIZES.patternButton, () => {
@@ -31,11 +31,11 @@ function dmMousePressed() {
   }
 
   // シーケンサー
-  for (let i = 0; i < DM_MUSIC_LIST.length; i++) {
-    for (let j = 0; j < DM_BEAT; j++) {
+  for (let yi = 0; yi < DM_MUSIC_LIST.length; yi++) {
+    for (let xi = 0; xi < DM_BEAT; xi++) {
       const pos = {
-        x: DM_POSITIONS.seqArea.x + j * DM_PARTS_SIZES.seqCell.width,
-        y: DM_POSITIONS.seqArea.y + i * DM_PARTS_SIZES.seqCell.height,
+        x: DM_POSITIONS.seqArea.x + xi * DM_PARTS_SIZES.seqCell.width,
+        y: DM_POSITIONS.seqArea.y + yi * DM_PARTS_SIZES.seqCell.height,
       }
       dmMousePressedBlock(pos, DM_PARTS_SIZES.seqCell, () => {
         // TODO: 15-3. シーケンサーセルを押した時の処理を書こう！
