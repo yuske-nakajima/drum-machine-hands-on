@@ -4,7 +4,7 @@ function dmMousePressed() {
     DM_POSITIONS.startButton,
     DM_PARTS_SIZES.controlButton,
     () => {
-      dmIsPlaying = true
+      // TODO: 12-3. 再生ボタンを押した時の処理を書こう！
     },
   )
 
@@ -13,7 +13,7 @@ function dmMousePressed() {
     DM_POSITIONS.stopButton,
     DM_PARTS_SIZES.controlButton,
     () => {
-      dmIsStopping = true
+      // TODO: 13-3. 停止ボタンを押した時の処理を書こう！
     },
   )
 
@@ -26,7 +26,7 @@ function dmMousePressed() {
       y: DM_POSITIONS.patternButton.y,
     }
     dmMousePressedBlock(pos, DM_PARTS_SIZES.patternButton, () => {
-      dmCurrentPattern = dmSaveToLocalStorage('dmCurrentPattern', i + 1)
+      // TODO: 14-3. パターンボタンを押した時の処理を書こう！
     })
   }
 
@@ -38,7 +38,9 @@ function dmMousePressed() {
         y: DM_POSITIONS.seqArea.y + i * DM_PARTS_SIZES.seqCell.height,
       }
       dmMousePressedBlock(pos, DM_PARTS_SIZES.seqCell, () => {
-        dmBeatData[dmCurrentPattern][i][j] = !dmBeatData[dmCurrentPattern][i][j]
+        // TODO: 15-3. シーケンサーセルを押した時の処理を書こう！
+
+        // パターンのビートデータを更新
         dmSaveToLocalStorage('dmBeatData', dmBeatData)
       })
     }
@@ -60,8 +62,7 @@ function dmMousePressed() {
     y: DM_POSITIONS.tempoKnob.y - DM_PARTS_SIZES.knob.height / 2,
   }
   dmMousePressedBlock(tempoKnobPos, DM_PARTS_SIZES.knob, () => {
-    dmIsDraggingTempo = true
-    dmLastMouse = { x: mouseX, y: mouseY }
+    // TODO: 11-3. Tempoノブの挙動を書こう！
   })
 }
 
