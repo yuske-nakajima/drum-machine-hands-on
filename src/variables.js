@@ -6,7 +6,7 @@
 let dmCurrentPattern = dmGetOrInitializeValue('dmCurrentPattern', 1)
 let isDraggingVolume = false
 let isDraggingTempo = false
-let lastMouseY = 0
+let lastMouse = { x: 0, y: 0 }
 
 // --- MUSIC
 let dmLastBeatTime = 0
