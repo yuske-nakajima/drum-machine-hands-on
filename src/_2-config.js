@@ -87,9 +87,9 @@ let audioContext = new (window.AudioContext || window.webkitAudioContext)()
 // 添字0は使わない。1 ~ DM_PATTERN_NUM
 // dmBeatData[n]: DM_MUSIC_LIST * DM_BEAT の数だけ要素を持つ 0 or 1 の 2次元配列。
 const initDmBeatData = [[], [], [], [], []]
-for (let i = 1; i <= DM_PATTERN_NUM; i++) {
-  for (let j = 0; j < DM_MUSIC_LIST.length; j++) {
-    initDmBeatData[i][j] = new Array(DM_BEAT).fill(false)
+for (let yi = 1; yi <= DM_PATTERN_NUM; yi++) {
+  for (let xi = 0; xi < DM_MUSIC_LIST.length; xi++) {
+    initDmBeatData[yi][xi] = new Array(DM_BEAT).fill(false)
   }
 }
 let dmBeatData = dmGetOrInitializeValue('dmBeatData', initDmBeatData)
