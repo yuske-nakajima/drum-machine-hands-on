@@ -97,8 +97,6 @@ function drawGrid() {
 
     stroke(colors.white)
     strokeWeight(5)
-    text(instrument, blockWidth / 2 + lineWeight, yOffset + blockWidth / 2 + lineWeight)
-
     noStroke()
     text(instrument, blockWidth / 2 + lineWeight, yOffset + blockWidth / 2 + lineWeight)
 
