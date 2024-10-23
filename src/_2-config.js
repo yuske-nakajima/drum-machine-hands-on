@@ -70,9 +70,9 @@ const DM_POSITIONS = {
 // --- UI
 // 1 ~ DM_PATTERN_NUM
 let dmCurrentPattern = dmGetOrInitializeValue('dmCurrentPattern', 1)
-let isDraggingVolume = false
-let isDraggingTempo = false
-let lastMouse = { x: 0, y: 0 }
+let dmIsDraggingVolume = false
+let dmIsDraggingTempo = false
+let dmLastMouse = { x: 0, y: 0 }
 
 // --- MUSIC
 let dmLastBeatTime = 0
