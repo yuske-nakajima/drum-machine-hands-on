@@ -14,10 +14,10 @@ function dmPlay() {
 
   dmOnBeat = dmBeatCount % DM_BEAT
 
-  for (let i = 0; i < DM_MUSIC_LIST.length; i++) {
-    for (let j = 0; j < DM_BEAT; j++) {
-      if (dmOnBeat === j && dmBeatData[dmCurrentPattern][i][j]) {
-        const { func, gain } = DM_MUSIC_LIST[i]
+  for (let yi = 0; yi < DM_MUSIC_LIST.length; yi++) {
+    for (let xi = 0; xi < DM_BEAT; xi++) {
+      if (dmOnBeat === xi && dmBeatData[dmCurrentPattern][yi][xi]) {
+        const { func, gain } = DM_MUSIC_LIST[yi]
         func(gain * dmVolume)
       }
     }
