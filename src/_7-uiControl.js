@@ -1,18 +1,28 @@
 function dmMousePressed() {
   // 再生
-  dmMousePressedBlock(DM_POSITIONS.startButton, DM_PARTS_SIZES.controlButton, () => {
-    dmIsPlaying = true
-  })
+  dmMousePressedBlock(
+    DM_POSITIONS.startButton,
+    DM_PARTS_SIZES.controlButton,
+    () => {
+      dmIsPlaying = true
+    },
+  )
 
   // 停止
-  dmMousePressedBlock(DM_POSITIONS.stopButton, DM_PARTS_SIZES.controlButton, () => {
-    dmIsStopping = true
-  })
+  dmMousePressedBlock(
+    DM_POSITIONS.stopButton,
+    DM_PARTS_SIZES.controlButton,
+    () => {
+      dmIsStopping = true
+    },
+  )
 
   // パターン
   for (let i = 0; i < DM_PATTERN_NUM; i++) {
     const pos = {
-      x: DM_POSITIONS.patternButton.x + i * (DM_PARTS_SIZES.patternButton.width + DM_PATTERN_BUTTON_GAP),
+      x:
+        DM_POSITIONS.patternButton.x +
+        i * (DM_PARTS_SIZES.patternButton.width + DM_PATTERN_BUTTON_GAP),
       y: DM_POSITIONS.patternButton.y,
     }
     dmMousePressedBlock(pos, DM_PARTS_SIZES.patternButton, () => {
@@ -58,11 +68,17 @@ function dmMousePressed() {
 function dmMouseDragged() {
   if (isDraggingVolume) {
     const diff = mouseX + mouseY - (lastMouse.x + lastMouse.y)
-    dmVolume = dmSaveToLocalStorage('dmVolume', constrain(dmVolume + diff * 0.001, DM_MIN_VOLUME, DM_MAX_VOLUME))
+    dmVolume = dmSaveToLocalStorage(
+      'dmVolume',
+      constrain(dmVolume + diff * 0.001, DM_MIN_VOLUME, DM_MAX_VOLUME),
+    )
   }
   if (isDraggingTempo) {
     const diff = mouseX + mouseY - (lastMouse.x + lastMouse.y)
-    dmBpm = dmSaveToLocalStorage('dmBpm', ceil(constrain(dmBpm + diff * 0.05, DM_MIN_BPM, DM_MAX_BPM)))
+    dmBpm = dmSaveToLocalStorage(
+      'dmBpm',
+      ceil(constrain(dmBpm + diff * 0.05, DM_MIN_BPM, DM_MAX_BPM)),
+    )
   }
 }
 
