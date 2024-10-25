@@ -15,18 +15,6 @@ function dmUiDraw() {
       // START POSITION: DM_POSITIONS.patternButton
       // SIZE          : DM_PARTS_SIZES.patternButton
       // GAP           : DM_PATTERN_BUTTON_GAP
-      const pos = {
-        x:
-          DM_POSITIONS.patternButton.x +
-          xi * (DM_PARTS_SIZES.patternButton.width + DM_PATTERN_BUTTON_GAP),
-        y: DM_POSITIONS.patternButton.y,
-      }
-      rect(
-        pos.x,
-        pos.y,
-        DM_PARTS_SIZES.patternButton.width,
-        DM_PARTS_SIZES.patternButton.height,
-      )
 
       // 番号
       dmDrawBlock(() => {
@@ -38,12 +26,6 @@ function dmUiDraw() {
         // POSITION: POS
         // TEXT    : 番号
         // ※ テキストの配置方法に気をつける
-        textAlign(CENTER, CENTER)
-        text(
-          xi + 1,
-          pos.x + DM_PARTS_SIZES.patternButton.width / 2,
-          pos.y + DM_PARTS_SIZES.patternButton.height / 2,
-        )
       })
     }
   })
@@ -57,12 +39,6 @@ function dmUiDraw() {
     // TODO: DYNAMIC-2-1. Volumeノブ（背景）を描こう！
     // POSITION: DM_POSITIONS.volumeKnob
     // SIZE    : DM_PARTS_SIZES.knob
-    ellipse(
-      DM_POSITIONS.volumeKnob.x,
-      DM_POSITIONS.volumeKnob.y,
-      DM_PARTS_SIZES.knob.width,
-      DM_PARTS_SIZES.knob.height,
-    )
 
     fill(DM_COLORS.buttonLine)
     noStroke()
@@ -72,7 +48,6 @@ function dmUiDraw() {
     const x = DM_POSITIONS.volumeKnob.x + knobRadius * cos(angle)
     const y = DM_POSITIONS.volumeKnob.y + knobRadius * sin(angle)
     // TODO: DYNAMIC-2-2. Volumeノブ（可動部）を描こう！
-    ellipse(x, y, DM_PARTS_SIZES.knob.width / 4, DM_PARTS_SIZES.knob.height / 4)
   })
 
   // Tempoノブ
@@ -83,12 +58,6 @@ function dmUiDraw() {
     // TODO: DYNAMIC-3-1. Tempoノブ（背景）を描こう！
     // POSITION: DM_POSITIONS.tempoKnob
     // SIZE    : DM_PARTS_SIZES.knob
-    ellipse(
-      DM_POSITIONS.tempoKnob.x,
-      DM_POSITIONS.tempoKnob.y,
-      DM_PARTS_SIZES.knob.width,
-      DM_PARTS_SIZES.knob.height,
-    )
 
     fill(DM_COLORS.buttonLine)
     noStroke()
@@ -97,7 +66,6 @@ function dmUiDraw() {
     const x = DM_POSITIONS.tempoKnob.x + knobRadius * cos(angle)
     const y = DM_POSITIONS.tempoKnob.y + knobRadius * sin(angle)
     // TODO: DYNAMIC-3-2. Tempoノブ（可動部）を描こう！
-    ellipse(x, y, DM_PARTS_SIZES.knob.width / 4, DM_PARTS_SIZES.knob.height / 4)
   })
 
   // ディスプレイの描画
@@ -108,13 +76,6 @@ function dmUiDraw() {
     // TODO: DYNAMIC-4-1. テンポディスプレイ（背景）を描こう！
     // POSITION: DM_POSITIONS.tempoDisplay
     // SIZE    : DM_PARTS_SIZES.tempoDisplay
-    rectMode(CENTER)
-    rect(
-      DM_POSITIONS.tempoDisplay.x,
-      DM_POSITIONS.tempoDisplay.y,
-      DM_PARTS_SIZES.tempoDisplay.width,
-      DM_PARTS_SIZES.tempoDisplay.height,
-    )
 
     fill(DM_COLORS.displayText)
     noStroke()
@@ -123,8 +84,6 @@ function dmUiDraw() {
     // TODO: DYNAMIC-4-2. テンポディスプレイ（テキスト）を描こう！
     // POSITION: DM_POSITIONS.tempoDisplay
     // TEXT    : dmBpm
-    textAlign(CENTER, CENTER)
-    text(dmBpm, DM_POSITIONS.tempoDisplay.x, DM_POSITIONS.tempoDisplay.y)
   })
 
   // シーケンサー
@@ -142,12 +101,6 @@ function dmUiDraw() {
         // TODO: DYNAMIC-5-1. シーケンサーのセルを描こう！
         // POSITION: DM_POSITIONS.seqArea
         // SIZE    : DM_PARTS_SIZES.seqCell
-        rect(
-          DM_POSITIONS.seqArea.x + xi * DM_PARTS_SIZES.seqCell.width,
-          DM_POSITIONS.seqArea.y + yi * DM_PARTS_SIZES.seqCell.height,
-          DM_PARTS_SIZES.seqCell.width,
-          DM_PARTS_SIZES.seqCell.height,
-        )
 
         fillColor = dmBeatData[dmCurrentPattern][yi][xi]
           ? DM_COLORS.displayMain
@@ -159,16 +112,6 @@ function dmUiDraw() {
         // SIZE    : DM_PARTS_SIZES.seqCell
         // 実装したらクリックして挙動を確認する
         // stroke(DM_COLORS.designGuide) // ※ デバッグ用。挙動確認したら削除する。
-        rect(
-          DM_POSITIONS.seqArea.x +
-            DM_PARTS_SIZES.seqCell.width / 4 +
-            xi * DM_PARTS_SIZES.seqCell.width,
-          DM_POSITIONS.seqArea.y +
-            DM_PARTS_SIZES.seqCell.height / 4 +
-            yi * DM_PARTS_SIZES.seqCell.height,
-          DM_PARTS_SIZES.seqCell.width / 2,
-          DM_PARTS_SIZES.seqCell.height / 2,
-        )
       }
     }
 
@@ -185,14 +128,6 @@ function dmUiDraw() {
       // POSITION: DM_POSITIONS.seqLight
       // SIZE    : DM_PARTS_SIZES.seqCell
       // ※ ellipseMode のデフォルトは CENTER
-      ellipse(
-        DM_POSITIONS.seqLight.x +
-          DM_PARTS_SIZES.seqCell.width / 2 +
-          xi * DM_PARTS_SIZES.seqCell.width,
-        DM_POSITIONS.seqLight.y + DM_PARTS_SIZES.seqCell.height / 2,
-        DM_PARTS_SIZES.seqCell.width / 3,
-        DM_PARTS_SIZES.seqCell.height / 3,
-      )
     }
   })
 
@@ -208,12 +143,6 @@ function dmUiDraw() {
     // TODO: DYNAMIC-7-1. 再生ボタン（背景）を描こう！
     // POSITION: DM_POSITIONS.startButton
     // SIZE    : DM_PARTS_SIZES.controlButton
-    rect(
-      DM_POSITIONS.startButton.x,
-      DM_POSITIONS.startButton.y,
-      DM_PARTS_SIZES.controlButton.width,
-      DM_PARTS_SIZES.controlButton.height,
-    )
 
     const gap = DM_PARTS_SIZES.controlButton.width / 5
     fill(DM_COLORS.buttonLine)
@@ -228,11 +157,6 @@ function dmUiDraw() {
     }
     // TODO: DYNAMIC-7-2. 再生ボタン（マーク）を描こう！
     // SIZE: 縦横 が gap * 3 の正方形内に三角形を描画する
-    const point3 = {
-      x: DM_POSITIONS.startButton.x + gap * 4,
-      y: DM_POSITIONS.startButton.y + DM_PARTS_SIZES.controlButton.height / 2,
-    }
-    triangle(point1.x, point1.y, point2.x, point2.y, point3.x, point3.y)
   })
 
   // 停止ボタン
@@ -248,12 +172,6 @@ function dmUiDraw() {
     // TODO: DYNAMIC-8-1. 停止ボタン（背景）を描こう！
     // POSITION: DM_POSITIONS.stopButton
     // SIZE    : DM_PARTS_SIZES.controlButton
-    rect(
-      DM_POSITIONS.stopButton.x,
-      DM_POSITIONS.stopButton.y,
-      DM_PARTS_SIZES.controlButton.width,
-      DM_PARTS_SIZES.controlButton.height,
-    )
 
     // 停止ボタンマーク
     const gap = DM_PARTS_SIZES.controlButton.width / 5
@@ -261,12 +179,6 @@ function dmUiDraw() {
     noStroke()
     // TODO: DYNAMIC-8-2. 停止ボタン（マーク）を描こう！
     // SIZE: 停止ボタンの内側に 縦横 が gap * 3 の正方形
-    rect(
-      DM_POSITIONS.stopButton.x + gap,
-      DM_POSITIONS.stopButton.y + gap,
-      gap * 3,
-      gap * 3,
-    )
   })
 }
 
