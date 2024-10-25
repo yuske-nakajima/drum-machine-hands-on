@@ -83,6 +83,7 @@ function dmUiSetup() {
     // Volume
     // TODO: STATIC-5. Volumeのテキストを描こう！
     // POSITION: DM_POSITIONS.volumeText
+    text('VOLUME', DM_POSITIONS.volumeText.x, DM_POSITIONS.volumeText.y)
 
     // Tempo
     // TODO: STATIC-6. Tempoのテキストを描こう！
