@@ -57,6 +57,12 @@ function dmUiDraw() {
     // TODO: DYNAMIC-2-1. Volumeノブ（背景）を描こう！
     // POSITION: DM_POSITIONS.volumeKnob
     // SIZE    : DM_PARTS_SIZES.knob
+    ellipse(
+      DM_POSITIONS.volumeKnob.x,
+      DM_POSITIONS.volumeKnob.y,
+      DM_PARTS_SIZES.knob.width,
+      DM_PARTS_SIZES.knob.height,
+    )
 
     fill(DM_COLORS.buttonLine)
     noStroke()
@@ -66,6 +72,7 @@ function dmUiDraw() {
     const x = DM_POSITIONS.volumeKnob.x + knobRadius * cos(angle)
     const y = DM_POSITIONS.volumeKnob.y + knobRadius * sin(angle)
     // TODO: DYNAMIC-2-2. Volumeノブ（可動部）を描こう！
+    ellipse(x, y, DM_PARTS_SIZES.knob.width / 4, DM_PARTS_SIZES.knob.height / 4)
   })
 
   // Tempoノブ
