@@ -34,6 +34,8 @@ function dmMousePressed() {
   }
   dmMousePressedBlock(tempoKnobPos, DM_PARTS_SIZES.knob, () => {
     // TODO: ACTION-3. Tempoノブの挙動を書こう！
+    dmIsDraggingTempo = true
+    dmLastMouse = { x: mouseX, y: mouseY }
   })
 
   // シーケンサー

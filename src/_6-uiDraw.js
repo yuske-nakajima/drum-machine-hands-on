@@ -83,6 +83,12 @@ function dmUiDraw() {
     // TODO: DYNAMIC-3-1. Tempoノブ（背景）を描こう！
     // POSITION: DM_POSITIONS.tempoKnob
     // SIZE    : DM_PARTS_SIZES.knob
+    ellipse(
+      DM_POSITIONS.tempoKnob.x,
+      DM_POSITIONS.tempoKnob.y,
+      DM_PARTS_SIZES.knob.width,
+      DM_PARTS_SIZES.knob.height,
+    )
 
     fill(DM_COLORS.buttonLine)
     noStroke()
@@ -91,6 +97,7 @@ function dmUiDraw() {
     const x = DM_POSITIONS.tempoKnob.x + knobRadius * cos(angle)
     const y = DM_POSITIONS.tempoKnob.y + knobRadius * sin(angle)
     // TODO: DYNAMIC-3-2. Tempoノブ（可動部）を描こう！
+    ellipse(x, y, DM_PARTS_SIZES.knob.width / 4, DM_PARTS_SIZES.knob.height / 4)
   })
 
   // ディスプレイの描画
@@ -101,6 +108,13 @@ function dmUiDraw() {
     // TODO: DYNAMIC-4-1. テンポディスプレイ（背景）を描こう！
     // POSITION: DM_POSITIONS.tempoDisplay
     // SIZE    : DM_PARTS_SIZES.tempoDisplay
+    rectMode(CENTER)
+    rect(
+      DM_POSITIONS.tempoDisplay.x,
+      DM_POSITIONS.tempoDisplay.y,
+      DM_PARTS_SIZES.tempoDisplay.width,
+      DM_PARTS_SIZES.tempoDisplay.height,
+    )
 
     fill(DM_COLORS.displayText)
     noStroke()
@@ -109,6 +123,8 @@ function dmUiDraw() {
     // TODO: DYNAMIC-4-2. テンポディスプレイ（テキスト）を描こう！
     // POSITION: DM_POSITIONS.tempoDisplay
     // TEXT    : dmBpm
+    textAlign(CENTER, CENTER)
+    text(dmBpm, DM_POSITIONS.tempoDisplay.x, DM_POSITIONS.tempoDisplay.y)
   })
 
   // シーケンサー
