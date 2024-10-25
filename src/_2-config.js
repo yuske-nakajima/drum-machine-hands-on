@@ -2,6 +2,7 @@
 // --- 定数
 // ------------------------------------------------------------
 // --- MUSIC
+// TODO: CUSTOM: 音色を変えよう
 // NOTE: gain → 音量にばらつきがあるため、音量を調整している
 const DM_MUSIC_LIST = [
   { name: 'KICK', func: sounds.kick[6], gain: 0.8 },
