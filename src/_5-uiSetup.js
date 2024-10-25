@@ -100,6 +100,13 @@ function dmUiSetup() {
       // TODO: STATIC-8. 音色タイトルのテキストを描こう！
       // POSITION: DM_POSITIONS.seqText
       // ※幅は DM_PARTS_SIZES.seqCell.width 2つ分
+      text(
+        DM_MUSIC_LIST[yi].name,
+        DM_POSITIONS.seqText.x + DM_PARTS_SIZES.seqCell.width,
+        DM_POSITIONS.seqText.y +
+          DM_PARTS_SIZES.seqCell.height / 2 +
+          yi * DM_PARTS_SIZES.seqCell.height,
+      )
     }
   })
 }
