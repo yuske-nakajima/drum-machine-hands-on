@@ -72,7 +72,7 @@ function dmMousePressed() {
     DM_PARTS_SIZES.controlButton,
     () => {
       // TODO: ACTION-6. 停止ボタンを押した時の処理を書こう！
-      dmIsStopping = false // ここを修正
+      dmIsStopping = true
     },
   )
 }

@@ -249,6 +249,12 @@ function dmUiDraw() {
     // TODO: DYNAMIC-8-1. 停止ボタン（背景）を描こう！
     // POSITION: DM_POSITIONS.stopButton
     // SIZE    : DM_PARTS_SIZES.controlButton
+    rect(
+      DM_POSITIONS.stopButton.x,
+      DM_POSITIONS.stopButton.y,
+      DM_PARTS_SIZES.controlButton.width,
+      DM_PARTS_SIZES.controlButton.height,
+    )
 
     // 停止ボタンマーク
     const gap = DM_PARTS_SIZES.controlButton.width / 5
@@ -256,6 +262,12 @@ function dmUiDraw() {
     noStroke()
     // TODO: DYNAMIC-8-2. 停止ボタン（マーク）を描こう！
     // SIZE: 停止ボタンの内側に 縦横 が gap * 3 の正方形
+    rect(
+      DM_POSITIONS.stopButton.x + gap,
+      DM_POSITIONS.stopButton.y + gap,
+      gap * 3,
+      gap * 3,
+    )
   })
 }
 
