@@ -93,6 +93,7 @@ function dmUiSetup() {
     // Pattern
     // TODO: STATIC-7. Patternのテキストを描こう！
     // POSITION: DM_POSITIONS.patternText
+    text('PATTERN', DM_POSITIONS.patternText.x, DM_POSITIONS.patternText.y)
 
     // 音色
     for (let yi = 0; yi < DM_MUSIC_LIST.length; yi++) {
