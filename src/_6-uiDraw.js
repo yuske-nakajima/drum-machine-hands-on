@@ -15,6 +15,18 @@ function dmUiDraw() {
       // START POSITION: DM_POSITIONS.patternButton
       // SIZE          : DM_PARTS_SIZES.patternButton
       // GAP           : DM_PATTERN_BUTTON_GAP
+      const pos = {
+        x:
+          DM_POSITIONS.patternButton.x +
+          xi * (DM_PARTS_SIZES.patternButton.width + DM_PATTERN_BUTTON_GAP),
+        y: DM_POSITIONS.patternButton.y,
+      }
+      rect(
+        pos.x,
+        pos.y,
+        DM_PARTS_SIZES.patternButton.width,
+        DM_PARTS_SIZES.patternButton.height,
+      )
 
       // 番号
       dmDrawBlock(() => {
@@ -26,6 +38,12 @@ function dmUiDraw() {
         // POSITION: POS
         // TEXT    : 番号
         // ※ テキストの配置方法に気をつける
+        textAlign(CENTER, CENTER)
+        text(
+          xi + 1,
+          pos.x + DM_PARTS_SIZES.patternButton.width / 2,
+          pos.y + DM_PARTS_SIZES.patternButton.height / 2,
+        )
       })
     }
   })
