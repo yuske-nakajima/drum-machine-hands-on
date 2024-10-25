@@ -8,7 +8,9 @@ function dmUiSetup() {
     strokeWeight(DM_LINE_WEIGHT * 2)
     stroke(DM_COLORS.machineLine)
 
-    // TODO: 1. ドラムマシンの背景を描こう！
+    // TODO: STATIC-1. ドラムマシンの背景を描こう！
+    // POSITION: キャンバスの左上（0, 0）
+    // SIZE    : width, height（p5.js）
   })
 
   // ドラム・マシンの操作部分の背景
@@ -19,11 +21,16 @@ function dmUiSetup() {
 
     // volume・tempoエリア controlエリア patternエリアの描画
     for (let xi = 0; xi < 3; xi++) {
-      // TODO: 2. 各操作エリアの背景を描こう！
+      // TODO: STATIC-2. 各操作エリアの背景を描こう！
+      // POSITION: DM_POSITIONS.controlArea
+      // SIZE    : DM_PARTS_SIZES.controlArea
+      // GAP     : DM_AREA_GAP
     }
 
     // メインエリアの描画
-    // TODO: 3. メインエリアの背景を描こう！
+    // TODO: STATIC-3. メインエリアの背景を描こう！
+    // POSITION: DM_POSITIONS.mainArea
+    // SIZE    : DM_PARTS_SIZES.mainArea
   })
 
   // シーケンスライトの背景
@@ -32,13 +39,14 @@ function dmUiSetup() {
     stroke(DM_COLORS.machineLine)
     strokeWeight(DM_LINE_WEIGHT)
 
-    ellipseMode(CORNER)
     for (let xi = 0; xi < DM_BEAT; xi++) {
       // 4拍ごとにアクセントをつける
       const isAccent = xi % 4 === 0
       strokeWeight(DM_LINE_WEIGHT * (isAccent ? 2 : 1))
 
-      // TODO: 4. シーケンスライトの背景を描こう！
+      // TODO: STATIC-4. シーケンスライトの背景を描こう！
+      // POSITION: DM_POSITIONS.seqLight
+      // SIZE    : DM_PARTS_SIZES.seqCell の半分
     }
   })
 
@@ -51,17 +59,22 @@ function dmUiSetup() {
     textAlign(CENTER, CENTER)
 
     // Volume
-    // TODO: 5. Volumeのテキストを描こう！
+    // TODO: STATIC-5. Volumeのテキストを描こう！
+    // POSITION: DM_POSITIONS.volumeText
 
     // Tempo
-    // TODO: 6. Tempoのテキストを描こう！
+    // TODO: STATIC-6. Tempoのテキストを描こう！
+    // POSITION: DM_POSITIONS.tempoText
 
     // Pattern
-    // TODO: 7. Patternのテキストを描こう！
+    // TODO: STATIC-7. Patternのテキストを描こう！
+    // POSITION: DM_POSITIONS.patternText
 
     // 音色
     for (let yi = 0; yi < DM_MUSIC_LIST.length; yi++) {
-      // TODO: 8. 音色タイトルのテキストを描こう！
+      // TODO: STATIC-8. 音色タイトルのテキストを描こう！
+      // POSITION: DM_POSITIONS.seqText
+      // ※幅は DM_PARTS_SIZES.seqCell.width 2つ分
     }
   })
 }

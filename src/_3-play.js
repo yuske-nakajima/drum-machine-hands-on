@@ -17,8 +17,7 @@ function dmPlay() {
   for (let yi = 0; yi < DM_MUSIC_LIST.length; yi++) {
     for (let xi = 0; xi < DM_BEAT; xi++) {
       if (dmOnBeat === xi && dmBeatData[dmCurrentPattern][yi][xi]) {
-        const { func, gain } = DM_MUSIC_LIST[yi]
-        func(gain * dmVolume)
+        // TODO: ACTION-LAST. 音を鳴らそう
       }
     }
   }
