@@ -39,6 +39,12 @@ function dmUiSetup() {
     // TODO: STATIC-3. メインエリアの背景を描こう！
     // POSITION: DM_POSITIONS.mainArea
     // SIZE    : DM_PARTS_SIZES.mainArea
+    rect(
+      DM_POSITIONS.mainArea.x,
+      DM_POSITIONS.mainArea.y,
+      DM_PARTS_SIZES.mainArea.width,
+      DM_PARTS_SIZES.mainArea.height,
+    )
   })
 
   // シーケンスライトの背景
