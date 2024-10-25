@@ -88,6 +88,7 @@ function dmUiSetup() {
     // Tempo
     // TODO: STATIC-6. Tempoのテキストを描こう！
     // POSITION: DM_POSITIONS.tempoText
+    text('TEMPO', DM_POSITIONS.tempoText.x, DM_POSITIONS.tempoText.y)
 
     // Pattern
     // TODO: STATIC-7. Patternのテキストを描こう！
