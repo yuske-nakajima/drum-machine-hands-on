@@ -61,6 +61,14 @@ function dmUiSetup() {
       // TODO: STATIC-4. シーケンスライトの背景を描こう！
       // POSITION: DM_POSITIONS.seqLight
       // SIZE    : DM_PARTS_SIZES.seqCell の半分
+      ellipse(
+        DM_POSITIONS.seqLight.x +
+          DM_PARTS_SIZES.seqCell.width / 2 +
+          xi * DM_PARTS_SIZES.seqCell.width,
+        DM_POSITIONS.seqLight.y + DM_PARTS_SIZES.seqCell.height / 2,
+        DM_PARTS_SIZES.seqCell.width / 2,
+        DM_PARTS_SIZES.seqCell.height / 2,
+      )
     }
   })
 
