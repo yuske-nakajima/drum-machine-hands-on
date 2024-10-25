@@ -142,6 +142,12 @@ function dmUiDraw() {
         // TODO: DYNAMIC-5-1. シーケンサーのセルを描こう！
         // POSITION: DM_POSITIONS.seqArea
         // SIZE    : DM_PARTS_SIZES.seqCell
+        rect(
+          DM_POSITIONS.seqArea.x + xi * DM_PARTS_SIZES.seqCell.width,
+          DM_POSITIONS.seqArea.y + yi * DM_PARTS_SIZES.seqCell.height,
+          DM_PARTS_SIZES.seqCell.width,
+          DM_PARTS_SIZES.seqCell.height,
+        )
 
         fillColor = dmBeatData[dmCurrentPattern][yi][xi]
           ? DM_COLORS.displayMain
@@ -153,6 +159,16 @@ function dmUiDraw() {
         // SIZE    : DM_PARTS_SIZES.seqCell
         // 実装したらクリックして挙動を確認する
         // stroke(DM_COLORS.designGuide) // ※ デバッグ用。挙動確認したら削除する。
+        rect(
+          DM_POSITIONS.seqArea.x +
+            DM_PARTS_SIZES.seqCell.width / 4 +
+            xi * DM_PARTS_SIZES.seqCell.width,
+          DM_POSITIONS.seqArea.y +
+            DM_PARTS_SIZES.seqCell.height / 4 +
+            yi * DM_PARTS_SIZES.seqCell.height,
+          DM_PARTS_SIZES.seqCell.width / 2,
+          DM_PARTS_SIZES.seqCell.height / 2,
+        )
       }
     }
 

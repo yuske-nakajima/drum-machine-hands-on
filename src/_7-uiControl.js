@@ -47,7 +47,8 @@ function dmMousePressed() {
       }
       dmMousePressedBlock(pos, DM_PARTS_SIZES.seqCell, () => {
         // TODO: ACTION-4. シーケンサーセルを押した時の処理を書こう！
-        dmBeatData[dmCurrentPattern][yi][xi] = false
+        dmBeatData[dmCurrentPattern][yi][xi] =
+          !dmBeatData[dmCurrentPattern][yi][xi]
 
         // パターンのビートデータを更新
         dmSaveToLocalStorage('dmBeatData', dmBeatData)
