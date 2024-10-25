@@ -209,6 +209,12 @@ function dmUiDraw() {
     // TODO: DYNAMIC-7-1. 再生ボタン（背景）を描こう！
     // POSITION: DM_POSITIONS.startButton
     // SIZE    : DM_PARTS_SIZES.controlButton
+    rect(
+      DM_POSITIONS.startButton.x,
+      DM_POSITIONS.startButton.y,
+      DM_PARTS_SIZES.controlButton.width,
+      DM_PARTS_SIZES.controlButton.height,
+    )
 
     const gap = DM_PARTS_SIZES.controlButton.width / 5
     fill(DM_COLORS.buttonLine)
@@ -223,6 +229,11 @@ function dmUiDraw() {
     }
     // TODO: DYNAMIC-7-2. 再生ボタン（マーク）を描こう！
     // SIZE: 縦横 が gap * 3 の正方形内に三角形を描画する
+    const point3 = {
+      x: DM_POSITIONS.startButton.x + gap * 4,
+      y: DM_POSITIONS.startButton.y + DM_PARTS_SIZES.controlButton.height / 2,
+    }
+    triangle(point1.x, point1.y, point2.x, point2.y, point3.x, point3.y)
   })
 
   // 停止ボタン
