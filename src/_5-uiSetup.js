@@ -26,6 +26,13 @@ function dmUiSetup() {
       // POSITION: DM_POSITIONS.controlArea
       // SIZE    : DM_PARTS_SIZES.controlArea
       // GAP     : DM_AREA_GAP
+      rect(
+        DM_POSITIONS.controlArea.x +
+          xi * (DM_PARTS_SIZES.controlArea.width + DM_AREA_GAP),
+        DM_POSITIONS.controlArea.y,
+        DM_PARTS_SIZES.controlArea.width,
+        DM_PARTS_SIZES.controlArea.height,
+      )
     }
 
     // メインエリアの描画
