@@ -185,6 +185,7 @@ function dmUiDraw() {
       // POSITION: DM_POSITIONS.seqLight
       // SIZE    : DM_PARTS_SIZES.seqCell
       // ※ ellipseMode のデフォルトは CENTER
+      // fill(DM_COLORS.buttonActive)
       ellipse(
         DM_POSITIONS.seqLight.x +
           DM_PARTS_SIZES.seqCell.width / 2 +
