@@ -2,6 +2,7 @@ function dmInitial() {
   createCanvas(DM_WIDTH, DM_HEIGHT)
   colorMode(HSB)
 
+  // TODO: CUSTOM. 配色を自分好みにしよう！
   // 色の定義
   DM_COLORS.machineDark = color(220, 10, 50, 1)
   DM_COLORS.machineLight = color(220, 10, 70, 1)
