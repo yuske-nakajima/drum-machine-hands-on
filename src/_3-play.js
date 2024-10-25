@@ -18,6 +18,8 @@ function dmPlay() {
     for (let xi = 0; xi < DM_BEAT; xi++) {
       if (dmOnBeat === xi && dmBeatData[dmCurrentPattern][yi][xi]) {
         // TODO: ACTION-LAST. 音を鳴らそう
+        const { func, gain } = DM_MUSIC_LIST[yi]
+        func(gain * dmVolume)
       }
     }
   }
