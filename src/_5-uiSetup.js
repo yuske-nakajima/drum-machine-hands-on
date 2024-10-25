@@ -8,8 +8,10 @@ function dmUiSetup() {
     strokeWeight(DM_LINE_WEIGHT * 2)
     stroke(DM_COLORS.machineLine)
 
-    // TODO: 1. ドラムマシンの背景を描こう！
-    rect(0, 0, DM_WIDTH, DM_HEIGHT)
+    // TODO: STATIC-1. ドラムマシンの背景を描こう！
+    // POSITION: キャンバスの左上（0, 0）
+    // SIZE    : width, height（p5.js）
+    rect(0, 0, width, height)
   })
 
   // ドラム・マシンの操作部分の背景
@@ -19,11 +21,14 @@ function dmUiSetup() {
     stroke(DM_COLORS.machineLine)
 
     // volume・tempoエリア controlエリア patternエリアの描画
-    for (let i = 0; i < 3; i++) {
-      // TODO: 2. 各操作エリアの背景を描こう！
+    for (let xi = 0; xi < 3; xi++) {
+      // TODO: STATIC-2. 各操作エリアの背景を描こう！
+      // POSITION: DM_POSITIONS.controlArea
+      // SIZE    : DM_PARTS_SIZES.controlArea
+      // GAP     : DM_AREA_GAP
       rect(
         DM_POSITIONS.controlArea.x +
-          i * (DM_PARTS_SIZES.controlArea.width + DM_AREA_GAP),
+          xi * (DM_PARTS_SIZES.controlArea.width + DM_AREA_GAP),
         DM_POSITIONS.controlArea.y,
         DM_PARTS_SIZES.controlArea.width,
         DM_PARTS_SIZES.controlArea.height,
@@ -31,7 +36,9 @@ function dmUiSetup() {
     }
 
     // メインエリアの描画
-    // TODO: 3. メインエリアの背景を描こう！
+    // TODO: STATIC-3. メインエリアの背景を描こう！
+    // POSITION: DM_POSITIONS.mainArea
+    // SIZE    : DM_PARTS_SIZES.mainArea
     rect(
       DM_POSITIONS.mainArea.x,
       DM_POSITIONS.mainArea.y,
@@ -46,18 +53,19 @@ function dmUiSetup() {
     stroke(DM_COLORS.machineLine)
     strokeWeight(DM_LINE_WEIGHT)
 
-    ellipseMode(CORNER)
-    for (let i = 0; i < DM_BEAT; i++) {
+    for (let xi = 0; xi < DM_BEAT; xi++) {
       // 4拍ごとにアクセントをつける
-      const isAccent = i % 4 === 0
+      const isAccent = xi % 4 === 0
       strokeWeight(DM_LINE_WEIGHT * (isAccent ? 2 : 1))
 
-      // TODO: 4. シーケンスライトの背景を描こう！
+      // TODO: STATIC-4. シーケンスライトの背景を描こう！
+      // POSITION: DM_POSITIONS.seqLight
+      // SIZE    : DM_PARTS_SIZES.seqCell の半分
       ellipse(
         DM_POSITIONS.seqLight.x +
-          i * DM_PARTS_SIZES.seqCell.width +
-          DM_PARTS_SIZES.seqCell.width / 4,
-        DM_POSITIONS.seqLight.y + DM_PARTS_SIZES.seqCell.height / 4,
+          DM_PARTS_SIZES.seqCell.width / 2 +
+          xi * DM_PARTS_SIZES.seqCell.width,
+        DM_POSITIONS.seqLight.y + DM_PARTS_SIZES.seqCell.height / 2,
         DM_PARTS_SIZES.seqCell.width / 2,
         DM_PARTS_SIZES.seqCell.height / 2,
       )
@@ -73,26 +81,31 @@ function dmUiSetup() {
     textAlign(CENTER, CENTER)
 
     // Volume
-    // TODO: 5. Volumeのテキストを描こう！
+    // TODO: STATIC-5. Volumeのテキストを描こう！
+    // POSITION: DM_POSITIONS.volumeText
     text('VOLUME', DM_POSITIONS.volumeText.x, DM_POSITIONS.volumeText.y)
 
     // Tempo
-    // TODO: 6. Tempoのテキストを描こう！
+    // TODO: STATIC-6. Tempoのテキストを描こう！
+    // POSITION: DM_POSITIONS.tempoText
     text('TEMPO', DM_POSITIONS.tempoText.x, DM_POSITIONS.tempoText.y)
 
     // Pattern
-    // TODO: 7. Patternのテキストを描こう！
+    // TODO: STATIC-7. Patternのテキストを描こう！
+    // POSITION: DM_POSITIONS.patternText
     text('PATTERN', DM_POSITIONS.patternText.x, DM_POSITIONS.patternText.y)
 
     // 音色
-    for (let i = 0; i < DM_MUSIC_LIST.length; i++) {
-      // TODO: 8. 音色タイトルのテキストを描こう！
+    for (let yi = 0; yi < DM_MUSIC_LIST.length; yi++) {
+      // TODO: STATIC-8. 音色タイトルのテキストを描こう！
+      // POSITION: DM_POSITIONS.seqText
+      // ※幅は DM_PARTS_SIZES.seqCell.width 2つ分
       text(
-        DM_MUSIC_LIST[i].name,
-        DM_POSITIONS.seqText.x + (DM_PARTS_SIZES.seqCell.width * 2) / 2,
+        DM_MUSIC_LIST[yi].name,
+        DM_POSITIONS.seqText.x + DM_PARTS_SIZES.seqCell.width,
         DM_POSITIONS.seqText.y +
-          i * DM_PARTS_SIZES.seqCell.height +
-          DM_PARTS_SIZES.seqCell.height / 2,
+          DM_PARTS_SIZES.seqCell.height / 2 +
+          yi * DM_PARTS_SIZES.seqCell.height,
       )
     }
   })

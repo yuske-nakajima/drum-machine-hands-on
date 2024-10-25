@@ -1,11 +1,62 @@
 function dmUiDraw() {
+  // パターンボタン
+  dmDrawBlock(() => {
+    stroke(DM_COLORS.buttonLine)
+    strokeWeight(DM_LINE_WEIGHT)
+
+    for (let xi = 0; xi < DM_PATTERN_NUM; xi++) {
+      // ボタン
+      const buttonColor =
+        dmCurrentPattern === xi + 1
+          ? DM_COLORS.buttonActive
+          : DM_COLORS.buttonNormal
+      fill(buttonColor)
+      // TODO: DYNAMIC-1-1. パターンボタン（背景）を描こう！
+      // START POSITION: DM_POSITIONS.patternButton
+      // SIZE          : DM_PARTS_SIZES.patternButton
+      // GAP           : DM_PATTERN_BUTTON_GAP
+      const pos = {
+        x:
+          DM_POSITIONS.patternButton.x +
+          xi * (DM_PARTS_SIZES.patternButton.width + DM_PATTERN_BUTTON_GAP),
+        y: DM_POSITIONS.patternButton.y,
+      }
+      rect(
+        pos.x,
+        pos.y,
+        DM_PARTS_SIZES.patternButton.width,
+        DM_PARTS_SIZES.patternButton.height,
+      )
+
+      // 番号
+      dmDrawBlock(() => {
+        fill(DM_COLORS.buttonText)
+        noStroke()
+        textStyle(BOLD)
+        textSize(DM_PARTS_SIZES.patternButton.height / 2)
+        // TODO: DYNAMIC-1-2. パターンボタンのテキスト（番号）を描こう！
+        // POSITION: POS
+        // TEXT    : 番号
+        // ※ テキストの配置方法に気をつける
+        textAlign(CENTER, CENTER)
+        text(
+          xi + 1,
+          pos.x + DM_PARTS_SIZES.patternButton.width / 2,
+          pos.y + DM_PARTS_SIZES.patternButton.height / 2,
+        )
+      })
+    }
+  })
+
   //ノブの描画
   // Volumeノブ
   dmDrawBlock(() => {
     fill(DM_COLORS.buttonNormal)
     stroke(DM_COLORS.buttonLine)
     strokeWeight(DM_LINE_WEIGHT)
-    // TODO: 9-1. Volumeノブ（背景）を描こう！
+    // TODO: DYNAMIC-2-1. Volumeノブ（背景）を描こう！
+    // POSITION: DM_POSITIONS.volumeKnob
+    // SIZE    : DM_PARTS_SIZES.knob
     ellipse(
       DM_POSITIONS.volumeKnob.x,
       DM_POSITIONS.volumeKnob.y,
@@ -17,14 +68,11 @@ function dmUiDraw() {
     noStroke()
     const angle =
       map(dmVolume, DM_MIN_VOLUME, DM_MAX_VOLUME, 0, TWO_PI) + HALF_PI
-    const knobRadius = DM_PARTS_SIZES.knob.width / 3.5
-    // TODO: 9-2. Volumeノブ（可動部）を描こう！
-    ellipse(
-      DM_POSITIONS.volumeKnob.x + knobRadius * cos(angle),
-      DM_POSITIONS.volumeKnob.y + knobRadius * sin(angle),
-      DM_PARTS_SIZES.knob.width / 4,
-      DM_PARTS_SIZES.knob.height / 4,
-    )
+    const knobRadius = DM_PARTS_SIZES.knob.width / 3
+    const x = DM_POSITIONS.volumeKnob.x + knobRadius * cos(angle)
+    const y = DM_POSITIONS.volumeKnob.y + knobRadius * sin(angle)
+    // TODO: DYNAMIC-2-2. Volumeノブ（可動部）を描こう！
+    ellipse(x, y, DM_PARTS_SIZES.knob.width / 4, DM_PARTS_SIZES.knob.height / 4)
   })
 
   // Tempoノブ
@@ -32,7 +80,9 @@ function dmUiDraw() {
     fill(DM_COLORS.buttonNormal)
     stroke(DM_COLORS.buttonLine)
     strokeWeight(DM_LINE_WEIGHT)
-    // TODO: 10-1. Tempoノブ（背景）を描こう！
+    // TODO: DYNAMIC-3-1. Tempoノブ（背景）を描こう！
+    // POSITION: DM_POSITIONS.tempoKnob
+    // SIZE    : DM_PARTS_SIZES.knob
     ellipse(
       DM_POSITIONS.tempoKnob.x,
       DM_POSITIONS.tempoKnob.y,
@@ -43,14 +93,11 @@ function dmUiDraw() {
     fill(DM_COLORS.buttonLine)
     noStroke()
     const angle = map(dmBpm, DM_MIN_BPM, DM_MAX_BPM, 0, TWO_PI) + HALF_PI
-    const knobRadius = DM_PARTS_SIZES.knob.width / 3.5
-    // TODO: 10-2. Tempoノブ（可動部）を描こう！
-    ellipse(
-      DM_POSITIONS.tempoKnob.x + knobRadius * cos(angle),
-      DM_POSITIONS.tempoKnob.y + knobRadius * sin(angle),
-      DM_PARTS_SIZES.knob.width / 4,
-      DM_PARTS_SIZES.knob.height / 4,
-    )
+    const knobRadius = DM_PARTS_SIZES.knob.width / 3
+    const x = DM_POSITIONS.tempoKnob.x + knobRadius * cos(angle)
+    const y = DM_POSITIONS.tempoKnob.y + knobRadius * sin(angle)
+    // TODO: DYNAMIC-3-2. Tempoノブ（可動部）を描こう！
+    ellipse(x, y, DM_PARTS_SIZES.knob.width / 4, DM_PARTS_SIZES.knob.height / 4)
   })
 
   // ディスプレイの描画
@@ -58,8 +105,10 @@ function dmUiDraw() {
     fill(DM_COLORS.displayMain)
     stroke(DM_COLORS.machineLine)
     strokeWeight(DM_LINE_WEIGHT)
+    // TODO: DYNAMIC-4-1. テンポディスプレイ（背景）を描こう！
+    // POSITION: DM_POSITIONS.tempoDisplay
+    // SIZE    : DM_PARTS_SIZES.tempoDisplay
     rectMode(CENTER)
-    // TODO: 11-1. ディスプレイ（背景）を描こう！
     rect(
       DM_POSITIONS.tempoDisplay.x,
       DM_POSITIONS.tempoDisplay.y,
@@ -69,11 +118,82 @@ function dmUiDraw() {
 
     fill(DM_COLORS.displayText)
     noStroke()
-    textAlign(CENTER, CENTER)
     textStyle(BOLD)
     textSize(DM_PARTS_SIZES.tempoDisplay.height / 2)
-    // TODO: 11-2. ディスプレイ（テキスト）を描こう！
+    // TODO: DYNAMIC-4-2. テンポディスプレイ（テキスト）を描こう！
+    // POSITION: DM_POSITIONS.tempoDisplay
+    // TEXT    : dmBpm
+    textAlign(CENTER, CENTER)
     text(dmBpm, DM_POSITIONS.tempoDisplay.x, DM_POSITIONS.tempoDisplay.y)
+  })
+
+  // シーケンサー
+  dmDrawBlock(() => {
+    for (let yi = 0; yi < DM_MUSIC_LIST.length; yi++) {
+      for (let xi = 0; xi < DM_BEAT; xi++) {
+        stroke(DM_COLORS.machineLight)
+        strokeWeight(DM_LINE_WEIGHT)
+
+        const isAccent = xi % 4 === 0
+        let fillColor = isAccent ? DM_COLORS.seqAccent : DM_COLORS.seqMain
+        fillColor =
+          dmIsPlaying && dmOnBeat === xi ? DM_COLORS.buttonNormal : fillColor
+        fill(fillColor)
+        // TODO: DYNAMIC-5-1. シーケンサーのセルを描こう！
+        // POSITION: DM_POSITIONS.seqArea
+        // SIZE    : DM_PARTS_SIZES.seqCell
+        rect(
+          DM_POSITIONS.seqArea.x + xi * DM_PARTS_SIZES.seqCell.width,
+          DM_POSITIONS.seqArea.y + yi * DM_PARTS_SIZES.seqCell.height,
+          DM_PARTS_SIZES.seqCell.width,
+          DM_PARTS_SIZES.seqCell.height,
+        )
+
+        fillColor = dmBeatData[dmCurrentPattern][yi][xi]
+          ? DM_COLORS.displayMain
+          : fillColor
+        fill(fillColor)
+        noStroke()
+        // TODO: DYNAMIC-5-2. シーケンサーセルのライトを描こう！
+        // POSITION: DM_POSITIONS.seqArea
+        // SIZE    : DM_PARTS_SIZES.seqCell
+        // 実装したらクリックして挙動を確認する
+        // stroke(DM_COLORS.designGuide) // ※ デバッグ用。挙動確認したら削除する。
+        rect(
+          DM_POSITIONS.seqArea.x +
+            DM_PARTS_SIZES.seqCell.width / 4 +
+            xi * DM_PARTS_SIZES.seqCell.width,
+          DM_POSITIONS.seqArea.y +
+            DM_PARTS_SIZES.seqCell.height / 4 +
+            yi * DM_PARTS_SIZES.seqCell.height,
+          DM_PARTS_SIZES.seqCell.width / 2,
+          DM_PARTS_SIZES.seqCell.height / 2,
+        )
+      }
+    }
+
+    // ライト
+    noStroke()
+    for (let xi = 0; xi < DM_BEAT; xi++) {
+      const fillColor =
+        dmIsPlaying && dmOnBeat === xi
+          ? DM_COLORS.buttonActive
+          : DM_COLORS.seqMain
+      fill(fillColor)
+
+      // TODO: DYNAMIC-6. シーケンサーのライトを描こう！
+      // POSITION: DM_POSITIONS.seqLight
+      // SIZE    : DM_PARTS_SIZES.seqCell
+      // ※ ellipseMode のデフォルトは CENTER
+      ellipse(
+        DM_POSITIONS.seqLight.x +
+          DM_PARTS_SIZES.seqCell.width / 2 +
+          xi * DM_PARTS_SIZES.seqCell.width,
+        DM_POSITIONS.seqLight.y + DM_PARTS_SIZES.seqCell.height / 2,
+        DM_PARTS_SIZES.seqCell.width / 3,
+        DM_PARTS_SIZES.seqCell.height / 3,
+      )
+    }
   })
 
   // 再生ボタン
@@ -85,7 +205,9 @@ function dmUiDraw() {
       ? DM_COLORS.buttonActive
       : DM_COLORS.buttonNormal
     fill(buttonColor)
-    // TODO: 12-1. 再生ボタン（背景）を描こう！
+    // TODO: DYNAMIC-7-1. 再生ボタン（背景）を描こう！
+    // POSITION: DM_POSITIONS.startButton
+    // SIZE    : DM_PARTS_SIZES.controlButton
     rect(
       DM_POSITIONS.startButton.x,
       DM_POSITIONS.startButton.y,
@@ -96,15 +218,21 @@ function dmUiDraw() {
     const gap = DM_PARTS_SIZES.controlButton.width / 5
     fill(DM_COLORS.buttonLine)
     noStroke()
-    // TODO: 12-2. 再生ボタン（マーク）を描こう！
-    triangle(
-      DM_POSITIONS.startButton.x + gap,
-      DM_POSITIONS.startButton.y + gap,
-      DM_POSITIONS.startButton.x + gap,
-      DM_POSITIONS.startButton.y + DM_PARTS_SIZES.controlButton.height - gap,
-      DM_POSITIONS.startButton.x + DM_PARTS_SIZES.controlButton.width - gap,
-      DM_POSITIONS.startButton.y + DM_PARTS_SIZES.controlButton.height / 2,
-    )
+    const point1 = {
+      x: DM_POSITIONS.startButton.x + gap,
+      y: DM_POSITIONS.startButton.y + gap,
+    }
+    const point2 = {
+      x: DM_POSITIONS.startButton.x + gap,
+      y: DM_POSITIONS.startButton.y + gap * 4,
+    }
+    // TODO: DYNAMIC-7-2. 再生ボタン（マーク）を描こう！
+    // SIZE: 縦横 が gap * 3 の正方形内に三角形を描画する
+    const point3 = {
+      x: DM_POSITIONS.startButton.x + gap * 4,
+      y: DM_POSITIONS.startButton.y + DM_PARTS_SIZES.controlButton.height / 2,
+    }
+    triangle(point1.x, point1.y, point2.x, point2.y, point3.x, point3.y)
   })
 
   // 停止ボタン
@@ -117,7 +245,9 @@ function dmUiDraw() {
       : DM_COLORS.buttonActive
     buttonColor = dmIsStopping ? DM_COLORS.buttonStopping : buttonColor
     fill(buttonColor)
-    // TODO: 13-1. 停止ボタン（背景）を描こう！
+    // TODO: DYNAMIC-8-1. 停止ボタン（背景）を描こう！
+    // POSITION: DM_POSITIONS.stopButton
+    // SIZE    : DM_PARTS_SIZES.controlButton
     rect(
       DM_POSITIONS.stopButton.x,
       DM_POSITIONS.stopButton.y,
@@ -129,116 +259,14 @@ function dmUiDraw() {
     const gap = DM_PARTS_SIZES.controlButton.width / 5
     fill(DM_COLORS.buttonLine)
     noStroke()
-    // TODO: 13-2. 停止ボタン（マーク）を描こう！
+    // TODO: DYNAMIC-8-2. 停止ボタン（マーク）を描こう！
+    // SIZE: 停止ボタンの内側に 縦横 が gap * 3 の正方形
     rect(
       DM_POSITIONS.stopButton.x + gap,
       DM_POSITIONS.stopButton.y + gap,
-      DM_PARTS_SIZES.controlButton.width - gap * 2,
-      DM_PARTS_SIZES.controlButton.height - gap * 2,
+      gap * 3,
+      gap * 3,
     )
-  })
-
-  // パターンボタン
-  dmDrawBlock(() => {
-    stroke(DM_COLORS.buttonLine)
-    strokeWeight(DM_LINE_WEIGHT)
-
-    const patternButtonTextStartX =
-      DM_POSITIONS.patternButton.x + DM_PARTS_SIZES.patternButton.width / 2
-    for (let i = 0; i < DM_PATTERN_NUM; i++) {
-      // ボタン
-      const buttonColor =
-        dmCurrentPattern === i + 1
-          ? DM_COLORS.buttonActive
-          : DM_COLORS.buttonNormal
-      fill(buttonColor)
-      // TODO: 14-1. パターンボタン（背景）を描こう！
-      rect(
-        DM_POSITIONS.patternButton.x +
-          i * (DM_PARTS_SIZES.patternButton.width + DM_PATTERN_BUTTON_GAP),
-        DM_POSITIONS.patternButton.y,
-        DM_PARTS_SIZES.patternButton.width,
-        DM_PARTS_SIZES.patternButton.height,
-      )
-
-      // 番号
-      dmDrawBlock(() => {
-        fill(DM_COLORS.buttonText)
-        noStroke()
-        textAlign(CENTER, CENTER)
-        textStyle(BOLD)
-        textSize(DM_PARTS_SIZES.patternButton.height / 2)
-        // TODO: 14-2. パターンボタンのテキスト（番号）を描こう！
-        text(
-          i + 1,
-          patternButtonTextStartX +
-            (i * DM_PARTS_SIZES.patternButton.width +
-              i * DM_PATTERN_BUTTON_GAP),
-          DM_POSITIONS.patternButton.y +
-            DM_PARTS_SIZES.patternButton.height / 2,
-        )
-      })
-    }
-  })
-
-  // シーケンサー
-  dmDrawBlock(() => {
-    for (let y = 0; y < DM_MUSIC_LIST.length; y++) {
-      for (let x = 0; x < DM_BEAT; x++) {
-        stroke(DM_COLORS.machineLight)
-        strokeWeight(DM_LINE_WEIGHT)
-
-        const isAccent = x % 4 === 0
-        let fillColor = isAccent ? DM_COLORS.seqAccent : DM_COLORS.seqMain
-        fillColor =
-          dmIsPlaying && dmOnBeat === x ? DM_COLORS.buttonNormal : fillColor
-        fill(fillColor)
-        // TODO: 15-1. シーケンサーのセルを描こう！
-        rect(
-          DM_POSITIONS.seqArea.x + x * DM_PARTS_SIZES.seqCell.width,
-          DM_POSITIONS.seqArea.y + y * DM_PARTS_SIZES.seqCell.height,
-          DM_PARTS_SIZES.seqCell.width,
-          DM_PARTS_SIZES.seqCell.height,
-        )
-
-        fillColor = dmBeatData[dmCurrentPattern][y][x]
-          ? DM_COLORS.displayMain
-          : fillColor
-        fill(fillColor)
-        noStroke()
-        // TODO: 15-2. シーケンサーセルのライトを描こう！
-        rect(
-          DM_POSITIONS.seqArea.x +
-            x * DM_PARTS_SIZES.seqCell.width +
-            DM_PARTS_SIZES.seqCell.width / 4,
-          DM_POSITIONS.seqArea.y +
-            y * DM_PARTS_SIZES.seqCell.height +
-            DM_PARTS_SIZES.seqCell.width / 4,
-          DM_PARTS_SIZES.seqCell.width / 2,
-          DM_PARTS_SIZES.seqCell.height / 2,
-        )
-      }
-    }
-
-    // ライト
-    noStroke()
-    for (let i = 0; i < DM_BEAT; i++) {
-      const fillColor =
-        dmIsPlaying && dmOnBeat === i
-          ? DM_COLORS.buttonActive
-          : DM_COLORS.seqMain
-      fill(fillColor)
-
-      // TODO: 16. シーケンサーのライトを描こう！
-      ellipse(
-        DM_POSITIONS.seqLight.x +
-          i * DM_PARTS_SIZES.seqCell.width +
-          DM_PARTS_SIZES.seqCell.width / 2,
-        DM_POSITIONS.seqLight.y + DM_PARTS_SIZES.seqCell.height / 2,
-        DM_PARTS_SIZES.seqCell.width / 3,
-        DM_PARTS_SIZES.seqCell.height / 3,
-      )
-    }
   })
 }
 
