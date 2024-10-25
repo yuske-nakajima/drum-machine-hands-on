@@ -11,6 +11,7 @@ function dmUiSetup() {
     // TODO: STATIC-1. ドラムマシンの背景を描こう！
     // POSITION: キャンバスの左上（0, 0）
     // SIZE    : width, height（p5.js）
+    rect(0, 0, width, height)
   })
 
   // ドラム・マシンの操作部分の背景
