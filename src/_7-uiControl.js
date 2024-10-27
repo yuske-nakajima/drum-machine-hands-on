@@ -9,7 +9,7 @@ function dmMousePressed() {
     }
     dmMousePressedBlock(pos, DM_PARTS_SIZES.patternButton, () => {
       // TODO: ACTION-1. パターンボタンを押した時の処理を書こう！
-      dmCurrentPattern = 0 // ここを修正
+      dmCurrentPattern = 1 // ここを修正
 
       // パターンプリセットを更新
       dmSaveToLocalStorage('dmCurrentPattern', dmCurrentPattern)
